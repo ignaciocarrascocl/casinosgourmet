@@ -60,22 +60,22 @@ const animateCounter = () => {
     const targetValue = 50000
     const startValue = 1
     const startTime = Date.now()
-    
+
     const updateCounter = () => {
         const elapsed = Date.now() - startTime
         const progress = Math.min(elapsed / duration, 1)
-        
+
         // Usar función de easing para una animación más suave
         const easeOutQuart = 1 - Math.pow(1 - progress, 4)
         const currentValue = Math.round(startValue + (targetValue - startValue) * easeOutQuart)
-        
+
         animatedCounter.value = currentValue
-        
+
         if (progress < 1) {
             requestAnimationFrame(updateCounter)
         }
     }
-    
+
     requestAnimationFrame(updateCounter)
 }
 
