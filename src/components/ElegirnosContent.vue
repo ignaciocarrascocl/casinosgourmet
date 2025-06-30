@@ -11,9 +11,9 @@
                 <!-- Seguridad alimentaria -->
                 <div class="item" :class="{
                     'animate__animated animate__fadeInUp': isVisible
-                }" :style="{ animationDelay: '0.4s' }">
-                    <div class="icon-container" @mouseover="hoverItem('seguridad')"
+                }" :style="{ animationDelay: '0.4s' }" @mouseover="hoverItem('seguridad')"
                         @mouseleave="unhoverItem('seguridad')">
+                    <div class="icon-container">
                         <img :src="items.seguridad.currentImage" alt="Seguridad alimentaria" class="icon">
                     </div>
                     <div class="content">
@@ -25,9 +25,9 @@
                 <!-- Flexibilidad -->
                 <div class="item" :class="{
                     'animate__animated animate__fadeInUp': isVisible
-                }" :style="{ animationDelay: '0.6s' }">
-                    <div class="icon-container" @mouseover="hoverItem('flexibilidad')"
+                }" :style="{ animationDelay: '0.6s' }" @mouseover="hoverItem('flexibilidad')"
                         @mouseleave="unhoverItem('flexibilidad')">
+                    <div class="icon-container">
                         <img :src="items.flexibilidad.currentImage" alt="Flexibilidad" class="icon">
                     </div>
                     <div class="content">
@@ -40,9 +40,9 @@
                 <!-- Variedad -->
                 <div class="item" :class="{
                     'animate__animated animate__fadeInUp': isVisible
-                }" :style="{ animationDelay: '0.8s' }">
-                    <div class="icon-container" @mouseover="hoverItem('variedad')"
+                }" :style="{ animationDelay: '0.8s' }" @mouseover="hoverItem('variedad')"
                         @mouseleave="unhoverItem('variedad')">
+                    <div class="icon-container">
                         <img :src="items.variedad.currentImage" alt="Variedad" class="icon">
                     </div>
                     <div class="content">
@@ -54,9 +54,9 @@
                 <!-- Equipamiento -->
                 <div class="item" :class="{
                     'animate__animated animate__fadeInUp': isVisible
-                }" :style="{ animationDelay: '1.0s' }">
-                    <div class="icon-container" @mouseover="hoverItem('equipamiento')"
+                }" :style="{ animationDelay: '1.0s' }" @mouseover="hoverItem('equipamiento')"
                         @mouseleave="unhoverItem('equipamiento')">
+                    <div class="icon-container">
                         <img :src="items.equipamiento.currentImage" alt="Equipamiento" class="icon">
                     </div>
                     <div class="content">
@@ -69,9 +69,9 @@
                 <!-- Preparaciones -->
                 <div class="item" :class="{
                     'animate__animated animate__fadeInUp': isVisible
-                }" :style="{ animationDelay: '1.2s' }">
-                    <div class="icon-container" @mouseover="hoverItem('preparaciones')"
+                }" :style="{ animationDelay: '1.2s' }" @mouseover="hoverItem('preparaciones')"
                         @mouseleave="unhoverItem('preparaciones')">
+                    <div class="icon-container">
                         <img :src="items.preparaciones.currentImage" alt="Preparaciones" class="icon">
                     </div>
                     <div class="content">
@@ -84,9 +84,9 @@
                 <!-- Puntualidad -->
                 <div class="item" :class="{
                     'animate__animated animate__fadeInUp': isVisible
-                }" :style="{ animationDelay: '1.4s' }">
-                    <div class="icon-container" @mouseover="hoverItem('puntualidad')"
+                }" :style="{ animationDelay: '1.4s' }" @mouseover="hoverItem('puntualidad')"
                         @mouseleave="unhoverItem('puntualidad')">
+                    <div class="icon-container">
                         <img :src="items.puntualidad.currentImage" alt="Puntualidad" class="icon">
                     </div>
                     <div class="content">
@@ -99,9 +99,9 @@
                 <!-- Proveedores Certificados -->
                 <div class="item full-width" :class="{
                     'animate__animated animate__fadeInUp': isVisible
-                }" :style="{ animationDelay: '1.6s' }">
-                    <div class="icon-container" @mouseover="hoverItem('proveedores')"
+                }" :style="{ animationDelay: '1.6s' }" @mouseover="hoverItem('proveedores')"
                         @mouseleave="unhoverItem('proveedores')">
+                    <div class="icon-container">
                         <img :src="items.proveedores.currentImage" alt="Proveedores Certificados" class="icon">
                     </div>
                     <div class="content">
@@ -116,7 +116,7 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 import { useIntersectionObserver } from '@vueuse/core'
 
 export default {
@@ -124,6 +124,52 @@ export default {
     setup() {
         const elegirnosRef = ref(null)
         const isVisible = ref(false)
+
+        const items = reactive({
+            seguridad: {
+                active: '/images/elegirnos/seguridad_activo.webp',
+                inactive: '/images/elegirnos/seguridad_inactivo.webp',
+                currentImage: '/images/elegirnos/seguridad_inactivo.webp'
+            },
+            flexibilidad: {
+                active: '/images/elegirnos/flexibilidad_activo.webp',
+                inactive: '/images/elegirnos/flexibilidad_inactivo.webp',
+                currentImage: '/images/elegirnos/flexibilidad_inactivo.webp'
+            },
+            variedad: {
+                active: '/images/elegirnos/variedad_activo.webp',
+                inactive: '/images/elegirnos/variedad_inactivo.webp',
+                currentImage: '/images/elegirnos/variedad_inactivo.webp'
+            },
+            equipamiento: {
+                active: '/images/elegirnos/equipamiento_activo.webp',
+                inactive: '/images/elegirnos/equipamiento_inactivo.webp',
+                currentImage: '/images/elegirnos/equipamiento_inactivo.webp'
+            },
+            preparaciones: {
+                active: '/images/elegirnos/preparaciones_activo.webp',
+                inactive: '/images/elegirnos/preparaciones_inactivo.webp',
+                currentImage: '/images/elegirnos/preparaciones_inactivo.webp'
+            },
+            puntualidad: {
+                active: '/images/elegirnos/puntualidad_activo.webp',
+                inactive: '/images/elegirnos/puntualidad_inactivo.webp',
+                currentImage: '/images/elegirnos/puntualidad_inactivo.webp'
+            },
+            proveedores: {
+                active: '/images/elegirnos/proveedores_activo.webp',
+                inactive: '/images/elegirnos/proveedores_inactivo.webp',
+                currentImage: '/images/elegirnos/proveedores_inactivo.webp'
+            }
+        })
+
+        const hoverItem = (item) => {
+            items[item].currentImage = items[item].active
+        }
+
+        const unhoverItem = (item) => {
+            items[item].currentImage = items[item].inactive
+        }
 
         useIntersectionObserver(
             elegirnosRef,
@@ -133,63 +179,17 @@ export default {
                 }
             },
             {
-                threshold: 0.1,
-                rootMargin: '50px'
+                threshold: 0.01,
+                rootMargin: '100px'
             }
         )
 
         return {
             elegirnosRef,
-            isVisible
-        }
-    },
-    data() {
-        return {
-            items: {
-                seguridad: {
-                    active: '/images/elegirnos/seguridad_activo.webp',
-                    inactive: '/images/elegirnos/seguridad_inactivo.webp',
-                    currentImage: '/images/elegirnos/seguridad_inactivo.webp'
-                },
-                flexibilidad: {
-                    active: '/images/elegirnos/flexibilidad_activo.webp',
-                    inactive: '/images/elegirnos/flexibilidad_inactivo.webp',
-                    currentImage: '/images/elegirnos/flexibilidad_inactivo.webp'
-                },
-                variedad: {
-                    active: '/images/elegirnos/variedad_activo.webp',
-                    inactive: '/images/elegirnos/variedad_inactivo.webp',
-                    currentImage: '/images/elegirnos/variedad_inactivo.webp'
-                },
-                equipamiento: {
-                    active: '/images/elegirnos/equipamiento_activo.webp',
-                    inactive: '/images/elegirnos/equipamiento_inactivo.webp',
-                    currentImage: '/images/elegirnos/equipamiento_inactivo.webp'
-                },
-                preparaciones: {
-                    active: '/images/elegirnos/preparaciones_activo.webp',
-                    inactive: '/images/elegirnos/preparaciones_inactivo.webp',
-                    currentImage: '/images/elegirnos/preparaciones_inactivo.webp'
-                },
-                puntualidad: {
-                    active: '/images/elegirnos/puntualidad_activo.webp',
-                    inactive: '/images/elegirnos/puntualidad_inactivo.webp',
-                    currentImage: '/images/elegirnos/puntualidad_inactivo.webp'
-                },
-                proveedores: {
-                    active: '/images/elegirnos/proveedores_activo.webp',
-                    inactive: '/images/elegirnos/proveedores_inactivo.webp',
-                    currentImage: '/images/elegirnos/proveedores_inactivo.webp'
-                }
-            }
-        }
-    },
-    methods: {
-        hoverItem(item) {
-            this.items[item].currentImage = this.items[item].active;
-        },
-        unhoverItem(item) {
-            this.items[item].currentImage = this.items[item].inactive;
+            isVisible,
+            items,
+            hoverItem,
+            unhoverItem
         }
     }
 }
@@ -290,12 +290,28 @@ export default {
     background: transparent;
     border-radius: 50%;
     overflow: hidden;
+    transition: transform 0.3s ease;
 }
 
 .icon {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    transition: all 0.4s ease;
+    opacity: 1;
+}
+
+.item:hover .icon-container {
+    transform: translateY(-50%) scale(1.1);
+}
+
+.item:nth-child(even):hover .icon-container {
+    transform: translateY(-50%) scale(1.1);
+}
+
+.item:hover .icon {
+    filter: brightness(1.1);
+    transform: scale(1.05);
 }
 
 .content {
@@ -320,10 +336,14 @@ p {
 }
 
 @media (max-width: 768px) {
+    .container {
+        padding: 0 20px; /* Reducido de 60px a 20px */
+    }
+
     .grid {
         grid-template-columns: 1fr;
-        padding: 0 50px;
-        /* Espacio para los iconos a los lados */
+        padding: 0 20px; /* Reducido de 50px a 20px para dar espacio a los iconos */
+        gap: 4rem; /* Aumentado de 2rem a 4rem para más separación vertical */
     }
 
     .full-width {
@@ -332,25 +352,80 @@ p {
 
     .item {
         width: 100%;
-        padding-top: 1.5rem;
+        padding-top: 3rem; /* Aumentado para dar espacio al icono arriba */
+        overflow: visible; /* Cambiado a visible para mostrar iconos arriba */
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
 
-    /* En móvil, poner todos los iconos a la izquierda */
+    /* En móvil, poner todos los iconos arriba */
     .item .icon-container,
     .item:nth-child(even) .icon-container,
     .item:nth-child(odd) .icon-container {
-        left: -62.5px;
+        position: absolute;
+        left: 50%;
         right: auto;
-        top: 50%;
-        transform: translateY(-50%);
+        top: -40px; /* Posicionar arriba de la caja */
+        transform: translateX(-50%);
+        width: 80px;
+        height: 80px;
+    }
+
+    .item:hover .icon-container,
+    .item:nth-child(even):hover .icon-container,
+    .item:nth-child(odd):hover .icon-container {
+        transform: translateX(-50%) scale(1.1);
     }
 
     .item .content,
     .item:nth-child(even) .content,
     .item:nth-child(odd) .content {
-        padding-left: 60px;
+        padding-left: 0;
         padding-right: 0;
-        text-align: left;
+        padding-top: 1rem; /* Espacio desde el icono */
+        text-align: center;
+    }
+}
+
+/* Agregar media query adicional para pantallas muy pequeñas como Galaxy S8 */
+@media (max-width: 400px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .grid {
+        padding: 0 15px;
+        gap: 3rem; /* Separación reducida pero aún mayor que desktop */
+    }
+
+    .item .icon-container,
+    .item:nth-child(even) .icon-container,
+    .item:nth-child(odd) .icon-container {
+        top: -30px;
+        width: 60px;
+        height: 60px;
+        transform: translateX(-50%);
+    }
+
+    .item .content,
+    .item:nth-child(even) .content,
+    .item:nth-child(odd) .content {
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 0.5rem;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    p {
+        font-size: 0.9rem;
     }
 }
 </style>

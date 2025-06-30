@@ -213,60 +213,67 @@ export default {
     .hero-section {
         flex-direction: column;
         padding: 0;
+        margin: 0;
         min-height: 100vh;
-        background-position: center 40%;
-        /* Ajustado para mostrar la imagen en una mejor posición */
+        background-position: center top;
         background-size: 100% auto;
-        /* Cambiado a auto para evitar estiramiento */
-        padding-top: 80px;
-        /* Añadido padding-top para compensar el navbar */
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .hero-content {
-        padding: 2rem 1.5rem;
-        margin-top: 3rem;
-        /* Aumentado de 2rem a 3rem */
+        padding: 16rem 1rem 2rem 1rem;
+        margin-top: 0;
         margin-bottom: 2rem;
-        /* Añadido margen inferior */
         text-align: center;
         width: 100%;
-        max-width: 80%;
-        margin-left: auto;
-        margin-right: auto;
+        margin-left: 0;
+        margin-right: 0;
         align-items: center;
         min-height: auto;
-        background-color: rgba(255, 255, 255, 0.8);
-        /* Fondo semi-transparente para mejorar legibilidad */
         border-radius: 8px;
-        /* Bordes redondeados para mejor apariencia */
+        box-sizing: border-box;
     }
 
     .somos {
         font-size: 2rem;
-        /* Reducido en 20% de 2.5rem */
     }
 
     .casinos,
     .gourmet {
-        font-size: 2.24rem;
-        /* Reducido en 20% de 2.8rem */
+        font-size: 1.8rem;
+        padding: 0.15rem 0.3rem;
     }
 
     .especialistas {
         font-size: 1.6rem;
-        /* Reducido en 20% de 2rem */
     }
 
     .slogan-section {
         position: relative;
         margin-top: auto;
         margin-bottom: 1rem;
-        /* Añadido margen inferior */
+        width: 100%;
+        box-sizing: border-box;
+        left: 0;
+        right: 0;
     }
 
     .slogan-section h3 {
         font-size: 1.2rem;
-        /* Reducido en 20% de 1.5rem */
+    }
+}
+
+@media (max-width: 480px) {
+    .casinos,
+    .gourmet {
+        font-size: 1.5rem;
+        padding: 0.1rem 0.25rem;
+    }
+    
+    .hero-content {
+        padding: 20rem 0.5rem 1.5rem 0.5rem;
+        margin-top: 0;
     }
 }
 </style>

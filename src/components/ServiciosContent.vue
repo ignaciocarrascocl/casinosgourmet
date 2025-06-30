@@ -70,8 +70,8 @@ useIntersectionObserver(
         }
     },
     {
-        threshold: 0.1,
-        rootMargin: '50px'
+        threshold: 0.01,
+        rootMargin: '100px'
     }
 )
 </script>

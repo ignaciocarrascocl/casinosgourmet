@@ -1,12 +1,7 @@
 <script setup>
 import Navbar from './components/Navbar.vue'
-import HomeContent from './components/HomeContent.vue'
-import ElegirnosContent from './components/ElegirnosContent.vue'
-import EntregamosContent from './components/EntregamosContent.vue'
-import ServiciosContent from './components/ServiciosContent.vue'
-import ContactoContent from './components/ContactoContent.vue'
 import Footer from './components/Footer.vue'
-import { onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
 
 // Función para actualizar dinámicamente la altura de las secciones
 function updateSectionHeights() {
@@ -14,9 +9,6 @@ function updateSectionHeights() {
   if (navbar) {
     const navHeight = navbar.offsetHeight;
     document.documentElement.style.setProperty('--nav-height', `${navHeight}px`);
-
-    // También actualizamos el padding-top del body
-    document.body.style.paddingTop = `${navHeight}px`;
   }
 }
 
@@ -65,31 +57,9 @@ onUnmounted(() => {
 
 <template>
   <Navbar />
-
-  <!-- Sección Inicio -->
-  <section id="inicio" class="section">
-    <HomeContent />
-  </section>
-
-  <!-- Sección ¿Por qué elegirnos? -->
-  <section id="porque-elegirnos" class="section">
-    <ElegirnosContent />
-  </section>
-
-  <!-- Sección Lo que entregamos -->
-  <section id="entregamos" class="section">
-    <EntregamosContent />
-  </section>
-
-  <!-- Sección Servicios -->
-  <section id="servicios" class="section">
-    <ServiciosContent />
-  </section>
-
-  <!-- Sección Contacto -->
-  <section id="contacto" class="section">
-    <ContactoContent />
-  </section>
+  
+  <!-- Router view para mostrar las diferentes páginas -->
+  <router-view />
 
   <!-- Footer -->
   <Footer />
@@ -109,9 +79,18 @@ onUnmounted(() => {
   /* Valor inicial que será sobrescrito por JS */
 }
 
+/* Eliminamos el padding-top del body */
 body {
-  padding-top: var(--nav-height);
-  /* Usa la variable CSS en lugar de un valor fijo */
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevenir scroll horizontal global */
+}
+
+/* Agregar overflow-x: hidden al app también */
+#app {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 /* Eliminar el margen negativo, ya no es necesario */

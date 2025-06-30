@@ -1,5 +1,9 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+
+const router = useRouter()
+const route = useRoute()
 
 const isMenuOpen = ref(false)
 const activeSection = ref('inicio')
@@ -13,7 +17,15 @@ const closeMenu = () => {
     isMenuOpen.value = false
 }
 
-const scrollToSection = (sectionId) => {
+const navigateToSection = async (sectionId) => {
+    // Si no estamos en la página principal, navegar primero
+    if (route.name !== 'home') {
+        await router.push('/')
+        // Esperar un poco para que la página se cargue
+        await new Promise(resolve => setTimeout(resolve, 100))
+    }
+    
+    // Hacer scroll a la sección
     const element = document.getElementById(sectionId)
     if (element) {
         element.scrollIntoView({
@@ -25,7 +37,13 @@ const scrollToSection = (sectionId) => {
 }
 
 const updateActiveSection = () => {
-    const sections = ['inicio', 'porque-elegirnos', 'servicios', 'calidad', 'contacto']
+    // Solo actualizar secciones activas si estamos en la página principal
+    if (route.name !== 'home') {
+        activeSection.value = ''
+        return
+    }
+
+    const sections = ['inicio', 'porque-elegirnos', 'servicios', 'contacto']
 
     for (const sectionId of sections) {
         const element = document.getElementById(sectionId)
@@ -62,9 +80,9 @@ onUnmounted(() => {
         <div class="logo-container" :class="{
             'animate__animated animate__fadeInLeft': isNavbarVisible
         }" :style="{ animationDelay: '0.3s' }">
-            <a href="#inicio" @click="scrollToSection('inicio')">
+            <router-link to="/" @click="navigateToSection('inicio')">
                 <img src="/logonavbar.webp" alt="Casinos Gourmet Logo" class="logo">
-            </a>
+            </router-link>
         </div>
 
         <!-- Botón hamburguesa -->
@@ -80,35 +98,28 @@ onUnmounted(() => {
         }" :style="{ animationDelay: '0.4s' }">
             <ul>
                 <li :class="{
-                    active: activeSection === 'inicio',
+                    active: activeSection === 'inicio' && route.name === 'home',
                     'animate__animated animate__slideInDown': isNavbarVisible
                 }" :style="{ animationDelay: '0.6s' }">
-                    <a href="#inicio" @click.prevent="scrollToSection('inicio')">Inicio</a>
+                    <a href="#" @click.prevent="navigateToSection('inicio')">Inicio</a>
                 </li>
                 <li :class="{
-                    active: activeSection === 'porque-elegirnos',
+                    active: activeSection === 'porque-elegirnos' && route.name === 'home',
                     'animate__animated animate__slideInDown': isNavbarVisible
                 }" :style="{ animationDelay: '0.7s' }">
-                    <a href="#porque-elegirnos" @click.prevent="scrollToSection('porque-elegirnos')">¿Por qué
-                        elegirnos?</a>
+                    <a href="#" @click.prevent="navigateToSection('porque-elegirnos')">¿Por qué elegirnos?</a>
                 </li>
                 <li :class="{
-                    active: activeSection === 'servicios',
+                    active: activeSection === 'servicios' && route.name === 'home',
                     'animate__animated animate__slideInDown': isNavbarVisible
                 }" :style="{ animationDelay: '0.8s' }">
-                    <a href="#servicios" @click.prevent="scrollToSection('servicios')">Servicios</a>
+                    <a href="#" @click.prevent="navigateToSection('servicios')">Servicios</a>
                 </li>
                 <li :class="{
-                    active: activeSection === 'calidad',
+                    active: activeSection === 'contacto' && route.name === 'home',
                     'animate__animated animate__slideInDown': isNavbarVisible
                 }" :style="{ animationDelay: '0.9s' }">
-                    <a href="#calidad" @click.prevent="scrollToSection('calidad')">Calidad</a>
-                </li>
-                <li :class="{
-                    active: activeSection === 'contacto',
-                    'animate__animated animate__slideInDown': isNavbarVisible
-                }" :style="{ animationDelay: '1.0s' }">
-                    <a href="#contacto" @click.prevent="scrollToSection('contacto')">Contacto</a>
+                    <a href="#" @click.prevent="navigateToSection('contacto')">Contacto</a>
                 </li>
             </ul>
         </nav>
@@ -333,8 +344,8 @@ onUnmounted(() => {
     }
 
     .logo-container {
-        width: 330px;
-        /* Logo 50% más grande en móvil también */
+        width: auto; /* Cambiado de 330px fijo a auto */
+        max-width: calc(100vw - 80px); /* Asegurar que no sobrepase el viewport */
         background-color: white;
         /* Mantener fondo blanco */
         justify-content: flex-start;
@@ -344,8 +355,7 @@ onUnmounted(() => {
     }
 
     .logo {
-        max-width: 300px;
-        /* Logo 50% más grande en móvil */
+        max-width: min(280px, calc(100vw - 100px)); /* Responsive y con límite absoluto */
         max-height: 112px;
         /* Altura aumentada proporcionalmente */
     }

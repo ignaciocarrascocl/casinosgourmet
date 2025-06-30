@@ -1,14 +1,79 @@
 <template>
-  <HomeContent />
+  <div class="home-view">
+    <!-- Sección Inicio -->
+    <section id="inicio" class="section">
+      <HomeContent />
+    </section>
+
+    <!-- Sección Por qué elegirnos -->
+    <section id="porque-elegirnos" class="section">
+      <ElegirnosContent />
+    </section>
+
+    <!-- Sección Lo que entregamos -->
+    <section id="entregamos" class="section">
+      <EntregamosContent />
+    </section>
+
+    <!-- Sección Servicios -->
+    <section id="servicios" class="section">
+      <ServiciosContent />
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto" class="section">
+      <ContactoContent />
+    </section>
+  </div>
 </template>
 
 <script>
 import HomeContent from '@/components/HomeContent.vue'
+import ElegirnosContent from '@/components/ElegirnosContent.vue'
+import EntregamosContent from '@/components/EntregamosContent.vue'
+import ServiciosContent from '@/components/ServiciosContent.vue'
+import ContactoContent from '@/components/ContactoContent.vue'
 
 export default {
   name: 'HomeView',
   components: {
-    HomeContent
+    HomeContent,
+    ElegirnosContent,
+    EntregamosContent,
+    ServiciosContent,
+    ContactoContent
   }
 }
 </script>
+
+<style scoped>
+.home-view {
+  padding-top: var(--nav-height, 110px);
+}
+
+.section {
+  min-height: calc(100vh - var(--nav-height));
+  scroll-margin-top: var(--nav-height);
+}
+
+#inicio {
+  padding: 0;
+  height: calc(100vh - var(--nav-height));
+}
+
+#porque-elegirnos,
+#servicios,
+#contacto {
+  padding: 80px 0;
+}
+
+#entregamos {
+  padding: 0;
+}
+
+@media (max-width: 991.98px) {
+  .home-view {
+    padding-top: var(--nav-height, 80px);
+  }
+}
+</style>

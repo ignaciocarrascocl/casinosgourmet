@@ -24,7 +24,7 @@
                     <div class="divider"></div>
                     <div class="contact-item">
                         <img src="/images/icons/spoon.png" alt="Trabaja con nosotros" class="contact-icon" />
-                        <span>Trabaja con nosotros</span>
+                        <router-link to="/trabaja-con-nosotros" @click="scrollToTop">Trabaja con nosotros</router-link>
                     </div>
                 </div>
             </div>
@@ -56,6 +56,13 @@ useIntersectionObserver(
         rootMargin: '50px' // Activa 50px antes de que el footer sea completamente visible
     }
 )
+
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    })
+}
 </script>
 
 <style scoped>
@@ -162,6 +169,19 @@ useIntersectionObserver(
 
 .contact-item:hover .contact-icon {
     transform: scale(1.1);
+}
+
+.contact-item a,
+.contact-item router-link {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: inherit;
+    transition: color 0.3s ease;
+}
+
+.contact-item:hover a,
+.contact-item:hover router-link {
+    color: var(--rojo, #BA3028);
 }
 
 .divider {
