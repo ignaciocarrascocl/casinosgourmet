@@ -6,20 +6,30 @@
             <div class="hero-content" :class="{
                 'animate__animated animate__fadeInLeft': isVisible
             }" :style="{ animationDelay: '0.3s' }">
-                <h2 class="somos" :class="{
+                <p class="somos" :class="{
                     'animate__animated animate__fadeInDown': isVisible
-                }" :style="{ animationDelay: '0.5s' }">SOMOS</h2>
-                <div class="brand" :class="{
+                }" :style="{ animationDelay: '0.5s' }">SOMOS</p>
+                <h1 class="brand" :class="{
                     'animate__animated animate__zoomIn': isVisible
                 }" :style="{ animationDelay: '0.7s' }">
                     <span class="casinos">CASINOS</span><span class="gourmet">GOURMET</span>
-                </div>
+                </h1>
                 <h2 class="especialistas" :class="{
                     'animate__animated animate__fadeInUp': isVisible
                 }" :style="{ animationDelay: '0.9s' }">ESPECIALISTAS EN<br>ALIMENTACIÓN<br>COLECTIVA</h2>
-                <button class="quote-button" :class="{
-                    'animate__animated animate__pulse': isVisible
-                }" :style="{ animationDelay: '1.1s' }">Solicitar Cotización</button>
+                <p class="experiencia" :class="{
+                    'animate__animated animate__fadeInUp': isVisible
+                }" :style="{ animationDelay: '1.0s' }">Por más de 10 años en el mercado</p>
+                <button class="quote-button" 
+                        type="button"
+                        aria-label="Solicitar cotización para servicios de alimentación empresarial"
+                        :class="{
+                            'animate__animated animate__pulse': isVisible
+                        }" 
+                        :style="{ animationDelay: '1.1s' }"
+                        @click="scrollToContact">
+                    Solicitar Cotización
+                </button>
             </div>
             <div class="slogan-section" :class="{
                 'animate__animated animate__fadeInRight': isVisible
@@ -30,33 +40,33 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue'
 import { useIntersectionObserver } from '@vueuse/core'
 
-export default {
-    name: 'HomeContent',
-    setup() {
-        const homeRef = ref(null)
-        const isVisible = ref(false)
+const homeRef = ref(null)
+const isVisible = ref(false)
 
-        useIntersectionObserver(
-            homeRef,
-            ([{ isIntersecting }]) => {
-                if (isIntersecting) {
-                    isVisible.value = true
-                }
-            },
-            {
-                threshold: 0.2,
-                rootMargin: '50px'
-            }
-        )
-
-        return {
-            homeRef,
-            isVisible
+useIntersectionObserver(
+    homeRef,
+    ([{ isIntersecting }]) => {
+        if (isIntersecting) {
+            isVisible.value = true
         }
+    },
+    {
+        threshold: 0.2,
+        rootMargin: '50px'
+    }
+)
+
+const scrollToContact = () => {
+    const contactSection = document.getElementById('contacto')
+    if (contactSection) {
+        contactSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        })
     }
 }
 </script>
@@ -74,6 +84,7 @@ export default {
 .somos,
 .brand,
 .especialistas,
+.experiencia,
 .quote-button,
 .slogan-section {
     opacity: 0;
@@ -83,6 +94,7 @@ export default {
 .somos.animate__animated,
 .brand.animate__animated,
 .especialistas.animate__animated,
+.experiencia.animate__animated,
 .quote-button.animate__animated,
 .slogan-section.animate__animated {
     opacity: 1;
@@ -126,8 +138,7 @@ export default {
 }
 
 .somos {
-    font-size: 2.4rem;
-    /* Reducido en 20% de 3rem */
+    font-size: 3.12rem; /* Aumentado 30% de 2.4rem */
     font-weight: 700;
     margin-bottom: 0.5rem;
     color: var(--negro);
@@ -140,8 +151,7 @@ export default {
 .casinos {
     background-color: var(--rojo);
     color: white;
-    font-size: 2.8rem;
-    /* Reducido en 20% de 3.5rem */
+    font-size: 3.64rem; /* Aumentado 30% de 2.8rem */
     font-weight: 800;
     padding: 0.2rem 0.5rem;
 }
@@ -149,27 +159,33 @@ export default {
 .gourmet {
     background-color: var(--verde);
     color: white;
-    font-size: 2.8rem;
-    /* Reducido en 20% de 3.5rem */
+    font-size: 3.64rem; /* Aumentado 30% de 2.8rem */
     font-weight: 800;
     padding: 0.2rem 0.5rem;
 }
 
 .especialistas {
-    font-size: 2rem;
-    /* Reducido en 20% de 2.5rem */
+    font-size: 2.6rem; /* Aumentado 30% de 2rem */
     font-weight: 700;
     line-height: 1.2;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     color: var(--negro);
+}
+
+.experiencia {
+    font-size: 1.82rem; /* Aumentado 30% de 1.4rem */
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: var(--rojo);
+    font-style: italic;
 }
 
 .quote-button {
     background-color: var(--rojo);
     color: white;
     border: none;
-    padding: 0.8rem 1.6rem;
-    font-size: 1rem;
+    padding: 1.04rem 2.08rem; /* Aumentado 30% de 0.8rem 1.6rem */
+    font-size: 1.3rem; /* Aumentado 30% de 1rem */
     font-weight: 600;
     cursor: pointer;
     font-family: var(--font-family);
@@ -247,6 +263,10 @@ export default {
 
     .especialistas {
         font-size: 1.6rem;
+    }
+
+    .experiencia {
+        font-size: 1.2rem;
     }
 
     .slogan-section {

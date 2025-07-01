@@ -74,52 +74,82 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <header class="top-header" :class="{
+    <header class="top-header" role="banner" :class="{
         'animate__animated animate__slideInDown': isNavbarVisible
     }">
         <div class="logo-container" :class="{
             'animate__animated animate__fadeInLeft': isNavbarVisible
         }" :style="{ animationDelay: '0.3s' }">
-            <router-link to="/" @click="navigateToSection('inicio')">
-                <img src="/logonavbar.webp" alt="Casinos Gourmet Logo" class="logo">
+            <router-link to="/" @click="navigateToSection('inicio')" aria-label="Ir a página principal de Casinos Gourmet">
+                <img src="/logonavbar.webp" alt="Casinos Gourmet - Servicios de Alimentación Empresarial" class="logo" width="270" height="146">
             </router-link>
         </div>
 
         <!-- Botón hamburguesa -->
-        <button class="navbar-toggler d-lg-none" type="button" @click="toggleMenu" :aria-expanded="isMenuOpen" :class="{
-            'animate__animated animate__fadeIn': isNavbarVisible
-        }" :style="{ animationDelay: '0.5s' }">
-            <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler d-lg-none" type="button" @click="toggleMenu" 
+                :aria-expanded="isMenuOpen" 
+                aria-controls="main-navigation"
+                aria-label="Abrir menú de navegación"
+                :class="{
+                    'animate__animated animate__fadeIn': isNavbarVisible
+                }" 
+                :style="{ animationDelay: '0.5s' }">
+            <span class="navbar-toggler-icon" aria-hidden="true"></span>
         </button>
 
-        <nav class="main-nav" :class="{
-            'show': isMenuOpen,
-            'animate__animated': isNavbarVisible
-        }" :style="{ animationDelay: '0.4s' }">
-            <ul>
-                <li :class="{
+        <nav class="main-nav" 
+             id="main-navigation"
+             role="navigation" 
+             aria-label="Menú principal"
+             :class="{
+                 'show': isMenuOpen,
+                 'animate__animated': isNavbarVisible
+             }" 
+             :style="{ animationDelay: '0.4s' }">
+            <ul role="menubar">
+                <li role="none" :class="{
                     active: activeSection === 'inicio' && route.name === 'home',
                     'animate__animated animate__slideInDown': isNavbarVisible
                 }" :style="{ animationDelay: '0.6s' }">
-                    <a href="#" @click.prevent="navigateToSection('inicio')">Inicio</a>
+                    <a href="#inicio" 
+                       role="menuitem"
+                       @click.prevent="navigateToSection('inicio')"
+                       :aria-current="activeSection === 'inicio' && route.name === 'home' ? 'page' : null">
+                        Inicio
+                    </a>
                 </li>
-                <li :class="{
+                <li role="none" :class="{
                     active: activeSection === 'porque-elegirnos' && route.name === 'home',
                     'animate__animated animate__slideInDown': isNavbarVisible
                 }" :style="{ animationDelay: '0.7s' }">
-                    <a href="#" @click.prevent="navigateToSection('porque-elegirnos')">¿Por qué elegirnos?</a>
+                    <a href="#porque-elegirnos" 
+                       role="menuitem"
+                       @click.prevent="navigateToSection('porque-elegirnos')"
+                       :aria-current="activeSection === 'porque-elegirnos' && route.name === 'home' ? 'page' : null">
+                        ¿Por qué elegirnos?
+                    </a>
                 </li>
-                <li :class="{
+                <li role="none" :class="{
                     active: activeSection === 'servicios' && route.name === 'home',
                     'animate__animated animate__slideInDown': isNavbarVisible
                 }" :style="{ animationDelay: '0.8s' }">
-                    <a href="#" @click.prevent="navigateToSection('servicios')">Servicios</a>
+                    <a href="#servicios" 
+                       role="menuitem"
+                       @click.prevent="navigateToSection('servicios')"
+                       :aria-current="activeSection === 'servicios' && route.name === 'home' ? 'page' : null">
+                        Servicios
+                    </a>
                 </li>
-                <li :class="{
+                <li role="none" :class="{
                     active: activeSection === 'contacto' && route.name === 'home',
                     'animate__animated animate__slideInDown': isNavbarVisible
                 }" :style="{ animationDelay: '0.9s' }">
-                    <a href="#" @click.prevent="navigateToSection('contacto')">Contacto</a>
+                    <a href="#contacto" 
+                       role="menuitem"
+                       @click.prevent="navigateToSection('contacto')"
+                       :aria-current="activeSection === 'contacto' && route.name === 'home' ? 'page' : null">
+                        Contacto
+                    </a>
                 </li>
             </ul>
         </nav>
@@ -375,8 +405,8 @@ onUnmounted(() => {
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.3s ease;
-        background-color: var(--verde);
-        /* Fondo verde para el dropdown */
+        background-color: white;
+        /* Fondo blanco para el dropdown */
     }
 
     .main-nav.show {
@@ -394,28 +424,44 @@ onUnmounted(() => {
     .main-nav li {
         width: 100%;
         height: auto;
-        margin-bottom: 8px;
-        /* Separación entre elementos */
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        margin-bottom: 0;
+        /* Eliminar separación para usar separadores */
+        border-top: none;
+        /* Eliminar borde superior */
+        position: relative;
+    }
+
+    /* Agregar separador similar al footer */
+    .main-nav li:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 20px;
+        right: 20px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent 0%, var(--rojo, #BA3028) 30%, var(--verde, #409100) 70%, transparent 100%);
+        border-radius: 1px;
+        opacity: 0.6;
     }
 
     .main-nav a {
         padding: 15px 20px;
         font-size: 18px;
-        justify-content: flex-start;
+        justify-content: center;
         height: auto;
         background-color: transparent;
         color: black;
-        /* Texto negro en dropdown verde */
+        /* Texto negro en dropdown blanco */
         transition: all 0.3s ease;
         border: none;
         border-radius: 0;
+        text-align: center;
     }
 
     .main-nav a:hover {
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: rgba(0, 0, 0, 0.05);
         color: black;
-        /* Hover con fondo semi-transparente */
+        /* Hover con fondo gris muy claro */
     }
 
     .main-nav li a::after {
@@ -423,9 +469,10 @@ onUnmounted(() => {
     }
 
     .main-nav li.active a {
-        background-color: rgba(0, 0, 0, 0.2);
+        background-color: transparent;
         color: black;
-        /* Elemento activo con fondo más oscuro */
+        font-weight: bold;
+        /* Elemento activo sin fondo, solo texto en negrita */
     }
 }
 

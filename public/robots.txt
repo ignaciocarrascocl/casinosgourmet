@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://casinosgourmet.cl/sitemap.xml
+
+# Crawl-delay para evitar sobrecarga del servidor
+Crawl-delay: 1
+
+# Disallow archivos temporales y de desarrollo
+Disallow: /src/
+Disallow: /*.js.map$
+Disallow: /*.css.map$

@@ -27,23 +27,30 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { onMounted, onUnmounted } from 'vue'
+import { useSEO, seoConfigs } from '@/composables/useSEO.js'
 import HomeContent from '@/components/HomeContent.vue'
 import ElegirnosContent from '@/components/ElegirnosContent.vue'
 import EntregamosContent from '@/components/EntregamosContent.vue'
 import ServiciosContent from '@/components/ServiciosContent.vue'
 import ContactoContent from '@/components/ContactoContent.vue'
 
-export default {
-  name: 'HomeView',
-  components: {
-    HomeContent,
-    ElegirnosContent,
-    EntregamosContent,
-    ServiciosContent,
-    ContactoContent
-  }
-}
+const { setPageSEO, resetSEO, addBreadcrumbStructuredData } = useSEO()
+
+onMounted(() => {
+  // Configurar SEO para la página principal
+  setPageSEO(seoConfigs.home)
+  
+  // Agregar breadcrumbs para la página principal
+  addBreadcrumbStructuredData([
+    { name: 'Inicio', url: 'https://casinosgourmet.cl' }
+  ])
+})
+
+onUnmounted(() => {
+  resetSEO()
+})
 </script>
 
 <style scoped>

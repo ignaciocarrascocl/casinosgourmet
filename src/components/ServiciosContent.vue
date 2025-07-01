@@ -1,58 +1,57 @@
 <template>
-    <div ref="serviciosRef" class="servicios-container" :class="{
+    <section ref="serviciosRef" class="servicios-container" :class="{
         'animate__animated animate__fadeIn': isVisible
-    }">
-        <h1 class="servicios-titulo" :class="{
+    }" aria-labelledby="servicios-heading">
+        <h2 id="servicios-heading" class="servicios-titulo" :class="{
             'animate__animated animate__fadeInDown': isVisible
-        }" :style="{ animationDelay: '0.2s' }">SERVICIOS</h1>
+        }" :style="{ animationDelay: '0.2s' }">SERVICIOS</h2>
 
         <div class="servicios-content">
             <!-- Desayunos y Onces -->
-            <div class="servicio-row" :class="{
+            <article class="servicio-row" :class="{
                 'animate__animated animate__fadeInLeft': isVisible
-            }" :style="{ animationDelay: '0.4s' }">
-                <div class="servicio-item desayunos-imagen"></div>
+            }" :style="{ animationDelay: '0.4s' }" itemscope itemtype="https://schema.org/Service">
+                <div class="servicio-item desayunos-imagen" role="img" aria-label="Imagen de desayunos empresariales variados y nutritivos"></div>
                 <div class="servicio-info rojo">
-                    <h2>DESAYUNOS Y ONCES</h2>
-                    <p>Saludables y tradicionales.</p>
+                    <h3 itemprop="name">DESAYUNOS Y ONCES</h3>
+                    <p itemprop="description">Desayunos y onces saludables y tradicionales para mantener la energía durante toda la jornada laboral.</p>
                 </div>
-            </div>
+            </article>
 
             <!-- Almuerzos y Cenas -->
-            <div class="servicio-row reverse" :class="{
+            <article class="servicio-row reverse" :class="{
                 'animate__animated animate__fadeInRight': isVisible
-            }" :style="{ animationDelay: '0.6s' }">
-                <div class="servicio-item almuerzos-imagen"></div>
+            }" :style="{ animationDelay: '0.6s' }" itemscope itemtype="https://schema.org/Service">
+                <div class="servicio-item almuerzos-imagen" role="img" aria-label="Imagen de almuerzos corporativos con salad bar y múltiples opciones"></div>
                 <div class="servicio-info verde">
-                    <h2>ALMUERZOS Y CENAS</h2>
-                    <p>Salad Bar, sopas naturales, tres opciones de plato principal (una hipocalórica), postres variados
-                        y jugos sin azúcar.</p>
+                    <h3 itemprop="name">ALMUERZOS Y CENAS</h3>
+                    <p itemprop="description">Salad Bar fresco, sopas naturales, tres opciones de plato principal incluyendo una opción hipocalórica, postres variados y jugos sin azúcar para una alimentación balanceada.</p>
                 </div>
-            </div>
+            </article>
 
             <!-- Colaciones y Coffee Breaks -->
-            <div class="servicio-row" :class="{
+            <article class="servicio-row" :class="{
                 'animate__animated animate__fadeInLeft': isVisible
-            }" :style="{ animationDelay: '0.8s' }">
-                <div class="servicio-item colaciones-imagen"></div>
+            }" :style="{ animationDelay: '0.8s' }" itemscope itemtype="https://schema.org/Service">
+                <div class="servicio-item colaciones-imagen" role="img" aria-label="Imagen de colaciones y coffee breaks para eventos empresariales"></div>
                 <div class="servicio-info rojo">
-                    <h2>COLACIONES Y COFFEE BREAKS</h2>
-                    <p>Opciones ideales para eventos y reuniones.</p>
+                    <h3 itemprop="name">COLACIONES Y COFFEE BREAKS</h3>
+                    <p itemprop="description">Opciones ideales para eventos, reuniones y coffee breaks empresariales con variedades dulces y saladas.</p>
                 </div>
-            </div>
+            </article>
 
             <!-- Eventos Gastronómicos -->
-            <div class="servicio-row reverse" :class="{
+            <article class="servicio-row reverse" :class="{
                 'animate__animated animate__fadeInRight': isVisible
-            }" :style="{ animationDelay: '1.0s' }">
-                <div class="servicio-item eventos-imagen"></div>
+            }" :style="{ animationDelay: '1.0s' }" itemscope itemtype="https://schema.org/Service">
+                <div class="servicio-item eventos-imagen" role="img" aria-label="Imagen de eventos gastronómicos corporativos y celebraciones especiales"></div>
                 <div class="servicio-info verde">
-                    <h2>EVENTOS GASTRONÓMICOS</h2>
-                    <p>Servicios únicos para eventos y ocasiones especiales</p>
+                    <h3 itemprop="name">EVENTOS GASTRONÓMICOS</h3>
+                    <p itemprop="description">Servicios gastronómicos únicos y personalizados para eventos corporativos, celebraciones y ocasiones especiales en tu empresa.</p>
                 </div>
-            </div>
+            </article>
         </div>
-    </div>
+    </section>
 </template>
 
 <script setup>
@@ -98,7 +97,7 @@ useIntersectionObserver(
 .servicios-titulo {
     text-align: center;
     color: var(--rojo);
-    font-size: 3rem;
+    font-size: 5rem;
     margin-bottom: 50px;
     font-weight: 700;
 }
@@ -164,7 +163,7 @@ useIntersectionObserver(
     background-color: var(--verde);
 }
 
-.servicio-info h2 {
+.servicio-info h3 {
     font-size: 1.8rem;
     margin-bottom: 15px;
     font-weight: 600;
@@ -181,7 +180,7 @@ useIntersectionObserver(
         font-size: 2.3rem;
     }
 
-    .servicio-info h2 {
+    .servicio-info h3 {
         font-size: 1.5rem;
     }
 

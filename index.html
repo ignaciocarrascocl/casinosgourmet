@@ -4,16 +4,154 @@
     <meta charset="UTF-8">
     <link rel="icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Meta tags básicos para SEO -->
+    <title>Casinos Gourmet - Servicios de Alimentación Empresarial de Calidad</title>
+    <meta name="description" content="Casinos Gourmet ofrece servicios integrales de alimentación empresarial: desayunos, almuerzos, colaciones y eventos corporativos. Equipamiento profesional, puntualidad garantizada y variedad gastronómica.">
+    <meta name="keywords" content="casino empresarial, alimentación corporativa, servicios de catering, desayunos empresariales, almuerzos corporativos, colaciones, eventos empresariales, casinos gourmet">
+    <meta name="author" content="Casinos Gourmet">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Spanish">
+    
+    <!-- Geo tags para Chile -->
+    <meta name="geo.region" content="CL">
+    <meta name="geo.country" content="Chile">
+    <meta name="ICBM" content="-33.4489, -70.6693">
+    <meta name="geo.position" content="-33.4489;-70.6693">
+    
+    <!-- Open Graph para redes sociales -->
+    <meta property="og:title" content="Casinos Gourmet - Servicios de Alimentación Empresarial">
+    <meta property="og:description" content="Servicios integrales de alimentación empresarial con equipamiento profesional, puntualidad garantizada y variedad gastronómica para tu empresa.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://casinosgourmet.cl">
+    <meta property="og:image" content="https://casinosgourmet.cl/logonavbar.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Casinos Gourmet">
+    <meta property="og:locale" content="es_CL">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Casinos Gourmet - Servicios de Alimentación Empresarial">
+    <meta name="twitter:description" content="Servicios integrales de alimentación empresarial con equipamiento profesional y variedad gastronómica.">
+    <meta name="twitter:image" content="https://casinosgourmet.cl/logonavbar.webp">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://casinosgourmet.cl">
+    
+    <!-- Preconnect para optimización de rendimiento -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <title>Casinos Gourmet</title>
+    
+    <!-- DNS prefetch para WhatsApp -->
+    <link rel="dns-prefetch" href="//wa.me">
+    
+    <!-- Fuentes con display=swap para mejor rendimiento -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Casinos Gourmet",
+      "description": "Servicios integrales de alimentación empresarial",
+      "url": "https://casinosgourmet.cl",
+      "logo": "https://casinosgourmet.cl/logonavbar.webp",
+      "telephone": "+56944622619",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "CL",
+        "addressLocality": "Chile"
+      },
+      "sameAs": [
+        "https://wa.me/56944622619"
+      ],
+      "serviceType": [
+        "Servicios de Alimentación Empresarial",
+        "Catering Corporativo",
+        "Casino Empresarial"
+      ],
+      "areaServed": {
+        "@type": "Country",
+        "name": "Chile"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios de Alimentación",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Desayunos Empresariales",
+              "description": "Desayunos nutritivos y variados para empresas"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Almuerzos Corporativos",
+              "description": "Almuerzos completos y balanceados para equipos de trabajo"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Colaciones",
+              "description": "Colaciones saludables para mantener la energía durante el día"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Eventos Corporativos",
+              "description": "Catering especializado para eventos empresariales"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+    
+    <!-- Tema del navegador -->
+    <meta name="theme-color" content="#BA3028">
+    <meta name="msapplication-TileColor" content="#BA3028">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Casinos Gourmet">
+    
     <style>
       :root {
         --rojo: #BA3028;
         --verde: #409100;
         --negro: #000000;
         --font-family: 'Montserrat', sans-serif;
+      }
+      
+      /* Critical CSS para evitar FOUC */
+      body {
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+      }
+      
+      /* Lazy loading placeholder */
+      img[loading="lazy"] {
+        background-color: #f0f0f0;
+      }
+      
+      /* Optimización de imágenes */
+      img {
+        height: auto;
+        max-width: 100%;
       }
     </style>
   </head>

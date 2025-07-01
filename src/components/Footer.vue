@@ -141,7 +141,7 @@ function scrollToTop() {
     display: flex;
     align-items: center;
     gap: 18px;
-    font-size: 1.1rem;
+    font-size: 2rem;
     font-weight: 500;
     color: #2c3e50;
     padding: 0.8rem 0;

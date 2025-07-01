@@ -81,7 +81,7 @@ useIntersectionObserver(
 }
 
 .contacto-title {
-    font-size: 3rem;
+    font-size: 5rem;
     font-weight: bold;
     color: var(--rojo);
     text-align: center;
@@ -154,7 +154,7 @@ useIntersectionObserver(
 
 @media (max-width: 768px) {
     .contacto-title {
-        font-size: 2.5rem;
+        font-size: 3.125rem;
     }
 
     .contacto-form {
@@ -168,7 +168,7 @@ useIntersectionObserver(
 
 @media (max-width: 480px) {
     .contacto-title {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
 
     .contacto-form {

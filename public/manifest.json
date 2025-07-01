@@ -1,0 +1,26 @@
+{
+  "name": "Casinos Gourmet - Servicios de Alimentación Empresarial",
+  "short_name": "Casinos Gourmet",
+  "description": "Servicios integrales de alimentación empresarial: desayunos, almuerzos, colaciones y eventos corporativos con equipamiento profesional y puntualidad garantizada.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#BA3028",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "16x16 32x32",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/logonavbar.webp",
+      "sizes": "192x192",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["food", "business", "productivity"],
+  "lang": "es",
+  "dir": "ltr"
+}

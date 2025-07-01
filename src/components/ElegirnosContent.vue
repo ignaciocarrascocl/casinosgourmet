@@ -1,115 +1,117 @@
 <template>
     <section ref="elegirnosRef" class="elegirnos-section" :class="{
         'animate__animated animate__fadeIn': isVisible
-    }">
+    }" aria-labelledby="elegirnos-heading">
         <div class="container">
-            <h1 class="title" :class="{
+            <h2 id="elegirnos-heading" class="title" :class="{
                 'animate__animated animate__fadeInDown': isVisible
-            }" :style="{ animationDelay: '0.2s' }">¿POR QUÉ ELEGIRNOS?</h1>
+            }" :style="{ animationDelay: '0.2s' }">¿POR QUÉ ELEGIRNOS?</h2>
 
-            <div class="grid">
+            <div class="grid" role="list">
                 <!-- Seguridad alimentaria -->
-                <div class="item" :class="{
+                <article class="item" role="listitem" :class="{
                     'animate__animated animate__fadeInUp': isVisible
                 }" :style="{ animationDelay: '0.4s' }" @mouseover="hoverItem('seguridad')"
-                        @mouseleave="unhoverItem('seguridad')">
+                        @mouseleave="unhoverItem('seguridad')" 
+                        itemscope itemtype="https://schema.org/Service">
                     <div class="icon-container">
-                        <img :src="items.seguridad.currentImage" alt="Seguridad alimentaria" class="icon">
+                        <img :src="items.seguridad.currentImage" alt="Icono de seguridad alimentaria - protocolos sanitarios" class="icon" width="125" height="125" loading="lazy">
                     </div>
                     <div class="content">
-                        <h3>SEGURIDAD ALIMENTARIA</h3>
-                        <p>Cumplimos con estándares de inocuidad y protocolos sanitarios de alimentos.</p>
+                        <h3 itemprop="name">SEGURIDAD ALIMENTARIA</h3>
+                        <p itemprop="description">Cumplimos con estándares de inocuidad y protocolos sanitarios de alimentos para garantizar la máxima seguridad en todos nuestros servicios.</p>
                     </div>
-                </div>
+                </article>
 
                 <!-- Flexibilidad -->
-                <div class="item" :class="{
+                <article class="item" role="listitem" :class="{
                     'animate__animated animate__fadeInUp': isVisible
                 }" :style="{ animationDelay: '0.6s' }" @mouseover="hoverItem('flexibilidad')"
-                        @mouseleave="unhoverItem('flexibilidad')">
+                        @mouseleave="unhoverItem('flexibilidad')"
+                        itemscope itemtype="https://schema.org/Service">
                     <div class="icon-container">
-                        <img :src="items.flexibilidad.currentImage" alt="Flexibilidad" class="icon">
+                        <img :src="items.flexibilidad.currentImage" alt="Icono de flexibilidad - menús personalizados" class="icon" width="125" height="125" loading="lazy">
                     </div>
                     <div class="content">
-                        <h3>FLEXIBILIDAD</h3>
-                        <p>Diseñamos menús a la medida para empresas, eventos, dietas especiales o requerimientos
-                            religiosos y culturales.</p>
+                        <h3 itemprop="name">FLEXIBILIDAD</h3>
+                        <p itemprop="description">Diseñamos menús a la medida para empresas, eventos, dietas especiales o requerimientos religiosos y culturales, adaptándonos a sus necesidades específicas.</p>
                     </div>
-                </div>
+                </article>
 
                 <!-- Variedad -->
-                <div class="item" :class="{
+                <article class="item" role="listitem" :class="{
                     'animate__animated animate__fadeInUp': isVisible
                 }" :style="{ animationDelay: '0.8s' }" @mouseover="hoverItem('variedad')"
-                        @mouseleave="unhoverItem('variedad')">
+                        @mouseleave="unhoverItem('variedad')"
+                        itemscope itemtype="https://schema.org/Service">
                     <div class="icon-container">
-                        <img :src="items.variedad.currentImage" alt="Variedad" class="icon">
+                        <img :src="items.variedad.currentImage" alt="Icono de variedad gastronómica - múltiples opciones" class="icon" width="125" height="125" loading="lazy">
                     </div>
                     <div class="content">
-                        <h3>VARIEDAD</h3>
-                        <p>Ofrecemos múltiples alternativas de platos.</p>
+                        <h3 itemprop="name">VARIEDAD GASTRONÓMICA</h3>
+                        <p itemprop="description">Ofrecemos múltiples alternativas de platos para satisfacer todos los gustos y preferencias alimentarias de su equipo.</p>
                     </div>
-                </div>
+                </article>
 
                 <!-- Equipamiento -->
-                <div class="item" :class="{
+                <article class="item" role="listitem" :class="{
                     'animate__animated animate__fadeInUp': isVisible
                 }" :style="{ animationDelay: '1.0s' }" @mouseover="hoverItem('equipamiento')"
-                        @mouseleave="unhoverItem('equipamiento')">
+                        @mouseleave="unhoverItem('equipamiento')"
+                        itemscope itemtype="https://schema.org/Service">
                     <div class="icon-container">
-                        <img :src="items.equipamiento.currentImage" alt="Equipamiento" class="icon">
+                        <img :src="items.equipamiento.currentImage" alt="Icono de equipamiento profesional sin costo" class="icon" width="125" height="125" loading="lazy">
                     </div>
                     <div class="content">
-                        <h3>EQUIPAMIENTO SIN COSTO</h3>
-                        <p>Nos hacemos cargo de la implementación completa del mobiliario y equipos para un óptimo
-                            funcionamiento del servicio in situ.</p>
+                        <h3 itemprop="name">EQUIPAMIENTO SIN COSTO</h3>
+                        <p itemprop="description">Nos hacemos cargo de la implementación completa del mobiliario y equipos profesionales para un óptimo funcionamiento del servicio in situ, sin costo adicional.</p>
                     </div>
-                </div>
+                </article>
 
                 <!-- Preparaciones -->
-                <div class="item" :class="{
+                <article class="item" role="listitem" :class="{
                     'animate__animated animate__fadeInUp': isVisible
                 }" :style="{ animationDelay: '1.2s' }" @mouseover="hoverItem('preparaciones')"
-                        @mouseleave="unhoverItem('preparaciones')">
+                        @mouseleave="unhoverItem('preparaciones')"
+                        itemscope itemtype="https://schema.org/Service">
                     <div class="icon-container">
-                        <img :src="items.preparaciones.currentImage" alt="Preparaciones" class="icon">
+                        <img :src="items.preparaciones.currentImage" alt="Icono de preparaciones caseras y frescas" class="icon" width="125" height="125" loading="lazy">
                     </div>
                     <div class="content">
-                        <h3>PREPARACIONES CASERAS Y FRESCAS</h3>
-                        <p>Nuestro menú está diseñado por expertos profesionales de alimentación, combinando
-                            ingredientes frescos y sabores equilibrados y de buen gusto.</p>
+                        <h3 itemprop="name">PREPARACIONES CASERAS Y FRESCAS</h3>
+                        <p itemprop="description">Nuestro menú está diseñado por expertos profesionales de alimentación, combinando ingredientes frescos y sabores equilibrados de buen gusto casero.</p>
                     </div>
-                </div>
+                </article>
 
                 <!-- Puntualidad -->
-                <div class="item" :class="{
+                <article class="item" role="listitem" :class="{
                     'animate__animated animate__fadeInUp': isVisible
                 }" :style="{ animationDelay: '1.4s' }" @mouseover="hoverItem('puntualidad')"
-                        @mouseleave="unhoverItem('puntualidad')">
+                        @mouseleave="unhoverItem('puntualidad')"
+                        itemscope itemtype="https://schema.org/Service">
                     <div class="icon-container">
-                        <img :src="items.puntualidad.currentImage" alt="Puntualidad" class="icon">
+                        <img :src="items.puntualidad.currentImage" alt="Icono de puntualidad garantizada" class="icon" width="125" height="125" loading="lazy">
                     </div>
                     <div class="content">
-                        <h3>PUNTUALIDAD</h3>
-                        <p>Entregamos el servicio siempre en tiempo y forma. La puntualidad no es un valor agregado, es
-                            un compromiso.</p>
+                        <h3 itemprop="name">PUNTUALIDAD GARANTIZADA</h3>
+                        <p itemprop="description">Entregamos el servicio siempre en tiempo y forma. La puntualidad no es un valor agregado, es nuestro compromiso inquebrantable con cada cliente.</p>
                     </div>
-                </div>
+                </article>
 
                 <!-- Proveedores Certificados -->
-                <div class="item full-width" :class="{
+                <article class="item full-width" role="listitem" :class="{
                     'animate__animated animate__fadeInUp': isVisible
                 }" :style="{ animationDelay: '1.6s' }" @mouseover="hoverItem('proveedores')"
-                        @mouseleave="unhoverItem('proveedores')">
+                        @mouseleave="unhoverItem('proveedores')"
+                        itemscope itemtype="https://schema.org/Service">
                     <div class="icon-container">
-                        <img :src="items.proveedores.currentImage" alt="Proveedores Certificados" class="icon">
+                        <img :src="items.proveedores.currentImage" alt="Icono de proveedores certificados de calidad" class="icon" width="125" height="125" loading="lazy">
                     </div>
                     <div class="content">
-                        <h3>PROVEEDORES CERTIFICADOS</h3>
-                        <p>Trabajamos con proveedores de materias primas certificados y con excelente logística de
-                            distribución a fin de tener materias primas frescas en todo momento.</p>
+                        <h3 itemprop="name">PROVEEDORES CERTIFICADOS</h3>
+                        <p itemprop="description">Trabajamos exclusivamente con proveedores de materias primas certificados y con excelente logística de distribución para garantizar materias primas frescas en todo momento.</p>
                     </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
