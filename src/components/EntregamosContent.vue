@@ -28,11 +28,7 @@
                 }" :style="{ animationDelay: '1.0s' }">
                     <img src="/images/entregamos/foto2.webp" alt="Opciones gastronómicas" />
                 </div>
-                <div class="gallery-item" :class="{
-                    'animate__animated animate__fadeInDown': isVisible
-                }" :style="{ animationDelay: '1.2s' }">
-                    <img src="/images/entregamos/foto3.webp" alt="Cafetería" />
-                </div>
+
                 <div class="gallery-item" :class="{
                     'animate__animated animate__fadeInRight': isVisible
                 }" :style="{ animationDelay: '1.4s' }">
