@@ -74,82 +74,52 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <header class="top-header" role="banner" :class="{
+    <header class="top-header" :class="{
         'animate__animated animate__slideInDown': isNavbarVisible
     }">
         <div class="logo-container" :class="{
             'animate__animated animate__fadeInLeft': isNavbarVisible
         }" :style="{ animationDelay: '0.3s' }">
-            <router-link to="/" @click="navigateToSection('inicio')" aria-label="Ir a página principal de Casinos Gourmet">
-                <img src="/logonavbar.webp" alt="Casinos Gourmet - Servicios de Alimentación Empresarial" class="logo" width="270" height="146">
+            <router-link to="/" @click="navigateToSection('inicio')">
+                <img src="/logonavbar.webp" alt="Casinos Gourmet Logo" class="logo">
             </router-link>
         </div>
 
         <!-- Botón hamburguesa -->
-        <button class="navbar-toggler d-lg-none" type="button" @click="toggleMenu" 
-                :aria-expanded="isMenuOpen" 
-                aria-controls="main-navigation"
-                aria-label="Abrir menú de navegación"
-                :class="{
-                    'animate__animated animate__fadeIn': isNavbarVisible
-                }" 
-                :style="{ animationDelay: '0.5s' }">
-            <span class="navbar-toggler-icon" aria-hidden="true"></span>
+        <button class="navbar-toggler d-lg-none" type="button" @click="toggleMenu" :aria-expanded="isMenuOpen" :class="{
+            'animate__animated animate__fadeIn': isNavbarVisible
+        }" :style="{ animationDelay: '0.5s' }">
+            <span class="navbar-toggler-icon"></span>
         </button>
 
-        <nav class="main-nav" 
-             id="main-navigation"
-             role="navigation" 
-             aria-label="Menú principal"
-             :class="{
-                 'show': isMenuOpen,
-                 'animate__animated': isNavbarVisible
-             }" 
-             :style="{ animationDelay: '0.4s' }">
-            <ul role="menubar">
-                <li role="none" :class="{
+        <nav class="main-nav" :class="{
+            'show': isMenuOpen,
+            'animate__animated': isNavbarVisible
+        }" :style="{ animationDelay: '0.4s' }">
+            <ul>
+                <li :class="{
                     active: activeSection === 'inicio' && route.name === 'home',
                     'animate__animated animate__slideInDown': isNavbarVisible
                 }" :style="{ animationDelay: '0.6s' }">
-                    <a href="#inicio" 
-                       role="menuitem"
-                       @click.prevent="navigateToSection('inicio')"
-                       :aria-current="activeSection === 'inicio' && route.name === 'home' ? 'page' : null">
-                        Inicio
-                    </a>
+                    <a href="#" @click.prevent="navigateToSection('inicio')">Inicio</a>
                 </li>
-                <li role="none" :class="{
+                <li :class="{
                     active: activeSection === 'porque-elegirnos' && route.name === 'home',
                     'animate__animated animate__slideInDown': isNavbarVisible
                 }" :style="{ animationDelay: '0.7s' }">
-                    <a href="#porque-elegirnos" 
-                       role="menuitem"
-                       @click.prevent="navigateToSection('porque-elegirnos')"
-                       :aria-current="activeSection === 'porque-elegirnos' && route.name === 'home' ? 'page' : null">
-                        ¿Por qué elegirnos?
-                    </a>
+                    <a href="#" @click.prevent="navigateToSection('porque-elegirnos')">¿Por qué elegirnos?</a>
                 </li>
-                <li role="none" :class="{
+                <li :class="{
                     active: activeSection === 'servicios' && route.name === 'home',
                     'animate__animated animate__slideInDown': isNavbarVisible
                 }" :style="{ animationDelay: '0.8s' }">
-                    <a href="#servicios" 
-                       role="menuitem"
-                       @click.prevent="navigateToSection('servicios')"
-                       :aria-current="activeSection === 'servicios' && route.name === 'home' ? 'page' : null">
-                        Servicios
-                    </a>
+                    <a href="#" @click.prevent="navigateToSection('servicios')">Servicios</a>
                 </li>
-                <li role="none" :class="{
+                <li :class="{
                     active: activeSection === 'contacto' && route.name === 'home',
                     'animate__animated animate__slideInDown': isNavbarVisible
                 }" :style="{ animationDelay: '0.9s' }">
-                    <a href="#contacto" 
-                       role="menuitem"
-                       @click.prevent="navigateToSection('contacto')"
-                       :aria-current="activeSection === 'contacto' && route.name === 'home' ? 'page' : null">
-                        Contacto
-                    </a>
+                    <a href="#" @click.prevent="navigateToSection('contacto')">Contacto</a>
                 </li>
             </ul>
         </nav>
@@ -223,10 +193,8 @@ onUnmounted(() => {
 }
 
 .logo {
-    max-width: 270px;
-    /* Logo 25% más pequeño (360px * 0.75) */
-    max-height: 146px;
-    /* Altura reducida proporcionalmente (195px * 0.75) */
+    max-width: 324px; /* Logo 20% más grande (270px * 1.2) */
+    max-height: 175px; /* Altura aumentada proporcionalmente (146px * 1.2) */
     object-fit: contain;
     /* Mantiene la proporción */
     padding: 5px;
@@ -368,26 +336,25 @@ onUnmounted(() => {
     .top-header {
         flex-wrap: wrap;
         min-height: 80px;
-        justify-content: space-between;
+        justify-content: space-between; /* Revertir a space-between para móvil */
         background-color: white;
         /* Header blanco en móvil */
     }
 
     .logo-container {
-        width: auto; /* Cambiado de 330px fijo a auto */
-        max-width: calc(100vw - 80px); /* Asegurar que no sobrepase el viewport */
+        width: auto;
+        max-width: calc(100vw - 80px);
         background-color: white;
-        /* Mantener fondo blanco */
-        justify-content: flex-start;
-        /* Alinear logo a la izquierda en móvil también */
-        padding: 0 10px;
-        /* Añadir padding izquierdo en móvil */
+        justify-content: flex-start; /* Logo alineado a la izquierda en móvil */
+        padding: 0; /* Eliminar todo el padding */
+        margin: 0; /* Eliminar cualquier margen */
     }
 
     .logo {
-        max-width: min(280px, calc(100vw - 100px)); /* Responsive y con límite absoluto */
+        max-width: min(280px, calc(100vw - 100px));
         max-height: 112px;
-        /* Altura aumentada proporcionalmente */
+        padding: 5px; /* Restaurar padding en móvil */
+        margin: 0; /* Eliminar cualquier margen del logo */
     }
 
     .navbar-toggler {
@@ -405,7 +372,7 @@ onUnmounted(() => {
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.3s ease;
-        background-color: white;
+        background-color: white; /* Revertir a blanco para el dropdown */
         /* Fondo blanco para el dropdown */
     }
 
@@ -426,28 +393,14 @@ onUnmounted(() => {
         height: auto;
         margin-bottom: 0;
         /* Eliminar separación para usar separadores */
-        border-top: none;
-        /* Eliminar borde superior */
         position: relative;
-    }
-
-    /* Agregar separador similar al footer */
-    .main-nav li:not(:last-child)::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 20px;
-        right: 20px;
-        height: 2px;
-        background: linear-gradient(90deg, transparent 0%, var(--rojo, #BA3028) 30%, var(--verde, #409100) 70%, transparent 100%);
-        border-radius: 1px;
-        opacity: 0.6;
+        /* Eliminar border-top completamente */
     }
 
     .main-nav a {
         padding: 15px 20px;
         font-size: 18px;
-        justify-content: center;
+        justify-content: center; /* Texto centrado en móvil */
         height: auto;
         background-color: transparent;
         color: black;
@@ -455,7 +408,10 @@ onUnmounted(() => {
         transition: all 0.3s ease;
         border: none;
         border-radius: 0;
-        text-align: center;
+        text-align: center; /* Texto centrado en móvil */
+        width: 100%; /* Asegurar que ocupe todo el ancho disponible */
+        display: flex; /* Mantener flex para centrado vertical y horizontal */
+        align-items: center; /* Centrado vertical */
     }
 
     .main-nav a:hover {
@@ -473,6 +429,19 @@ onUnmounted(() => {
         color: black;
         font-weight: bold;
         /* Elemento activo sin fondo, solo texto en negrita */
+    }
+
+    /* Agregar separador similar al footer */
+    .main-nav li:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 20px;
+        right: 20px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent 0%, var(--rojo, #BA3028) 30%, var(--verde, #409100) 70%, transparent 100%);
+        border-radius: 1px;
+        opacity: 0.6;
     }
 }
 

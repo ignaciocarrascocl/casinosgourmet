@@ -9,13 +9,12 @@
 
             <div class="grid" role="list">
                 <!-- Seguridad alimentaria -->
-                <article class="item" role="listitem" :class="{
+                <article ref="seguridadRef" class="item" role="listitem" :class="{
                     'animate__animated animate__fadeInUp': isVisible
-                }" :style="{ animationDelay: '0.4s' }" @mouseover="hoverItem('seguridad')"
-                        @mouseleave="unhoverItem('seguridad')" 
+                }" :style="{ animationDelay: '0.4s' }" 
                         itemscope itemtype="https://schema.org/Service">
                     <div class="icon-container">
-                        <img :src="items.seguridad.currentImage" alt="Icono de seguridad alimentaria - protocolos sanitarios" class="icon" width="125" height="125" loading="lazy">
+                        <img :src="items.seguridad.currentImage" alt="Icono de seguridad alimentaria - protocolos sanitarios" class="icon" width="125" height="125" loading="lazy" data-icon="seguridad">
                     </div>
                     <div class="content">
                         <h3 itemprop="name">SEGURIDAD ALIMENTARIA</h3>
@@ -24,13 +23,12 @@
                 </article>
 
                 <!-- Flexibilidad -->
-                <article class="item" role="listitem" :class="{
+                <article ref="flexibilidadRef" class="item" role="listitem" :class="{
                     'animate__animated animate__fadeInUp': isVisible
-                }" :style="{ animationDelay: '0.6s' }" @mouseover="hoverItem('flexibilidad')"
-                        @mouseleave="unhoverItem('flexibilidad')"
+                }" :style="{ animationDelay: '0.6s' }"
                         itemscope itemtype="https://schema.org/Service">
                     <div class="icon-container">
-                        <img :src="items.flexibilidad.currentImage" alt="Icono de flexibilidad - menús personalizados" class="icon" width="125" height="125" loading="lazy">
+                        <img :src="items.flexibilidad.currentImage" alt="Icono de flexibilidad - menús personalizados" class="icon" width="125" height="125" loading="lazy" data-icon="flexibilidad">
                     </div>
                     <div class="content">
                         <h3 itemprop="name">FLEXIBILIDAD</h3>
@@ -39,13 +37,12 @@
                 </article>
 
                 <!-- Variedad -->
-                <article class="item" role="listitem" :class="{
+                <article ref="variedadRef" class="item" role="listitem" :class="{
                     'animate__animated animate__fadeInUp': isVisible
-                }" :style="{ animationDelay: '0.8s' }" @mouseover="hoverItem('variedad')"
-                        @mouseleave="unhoverItem('variedad')"
+                }" :style="{ animationDelay: '0.8s' }"
                         itemscope itemtype="https://schema.org/Service">
                     <div class="icon-container">
-                        <img :src="items.variedad.currentImage" alt="Icono de variedad gastronómica - múltiples opciones" class="icon" width="125" height="125" loading="lazy">
+                        <img :src="items.variedad.currentImage" alt="Icono de variedad gastronómica - múltiples opciones" class="icon" width="125" height="125" loading="lazy" data-icon="variedad">
                     </div>
                     <div class="content">
                         <h3 itemprop="name">VARIEDAD GASTRONÓMICA</h3>
@@ -54,13 +51,12 @@
                 </article>
 
                 <!-- Equipamiento -->
-                <article class="item" role="listitem" :class="{
+                <article ref="equipamientoRef" class="item" role="listitem" :class="{
                     'animate__animated animate__fadeInUp': isVisible
-                }" :style="{ animationDelay: '1.0s' }" @mouseover="hoverItem('equipamiento')"
-                        @mouseleave="unhoverItem('equipamiento')"
+                }" :style="{ animationDelay: '1.0s' }"
                         itemscope itemtype="https://schema.org/Service">
                     <div class="icon-container">
-                        <img :src="items.equipamiento.currentImage" alt="Icono de equipamiento profesional sin costo" class="icon" width="125" height="125" loading="lazy">
+                        <img :src="items.equipamiento.currentImage" alt="Icono de equipamiento profesional sin costo" class="icon" width="125" height="125" loading="lazy" data-icon="equipamiento">
                     </div>
                     <div class="content">
                         <h3 itemprop="name">EQUIPAMIENTO SIN COSTO</h3>
@@ -69,13 +65,12 @@
                 </article>
 
                 <!-- Preparaciones -->
-                <article class="item" role="listitem" :class="{
+                <article ref="preparacionesRef" class="item" role="listitem" :class="{
                     'animate__animated animate__fadeInUp': isVisible
-                }" :style="{ animationDelay: '1.2s' }" @mouseover="hoverItem('preparaciones')"
-                        @mouseleave="unhoverItem('preparaciones')"
+                }" :style="{ animationDelay: '1.2s' }"
                         itemscope itemtype="https://schema.org/Service">
                     <div class="icon-container">
-                        <img :src="items.preparaciones.currentImage" alt="Icono de preparaciones caseras y frescas" class="icon" width="125" height="125" loading="lazy">
+                        <img :src="items.preparaciones.currentImage" alt="Icono de preparaciones caseras y frescas" class="icon" width="125" height="125" loading="lazy" data-icon="preparaciones">
                     </div>
                     <div class="content">
                         <h3 itemprop="name">PREPARACIONES CASERAS Y FRESCAS</h3>
@@ -84,13 +79,12 @@
                 </article>
 
                 <!-- Puntualidad -->
-                <article class="item" role="listitem" :class="{
+                <article ref="puntualidadRef" class="item" role="listitem" :class="{
                     'animate__animated animate__fadeInUp': isVisible
-                }" :style="{ animationDelay: '1.4s' }" @mouseover="hoverItem('puntualidad')"
-                        @mouseleave="unhoverItem('puntualidad')"
+                }" :style="{ animationDelay: '1.4s' }"
                         itemscope itemtype="https://schema.org/Service">
                     <div class="icon-container">
-                        <img :src="items.puntualidad.currentImage" alt="Icono de puntualidad garantizada" class="icon" width="125" height="125" loading="lazy">
+                        <img :src="items.puntualidad.currentImage" alt="Icono de puntualidad garantizada" class="icon" width="125" height="125" loading="lazy" data-icon="puntualidad">
                     </div>
                     <div class="content">
                         <h3 itemprop="name">PUNTUALIDAD GARANTIZADA</h3>
@@ -99,13 +93,12 @@
                 </article>
 
                 <!-- Proveedores Certificados -->
-                <article class="item full-width" role="listitem" :class="{
+                <article ref="proveedoresRef" class="item full-width" role="listitem" :class="{
                     'animate__animated animate__fadeInUp': isVisible
-                }" :style="{ animationDelay: '1.6s' }" @mouseover="hoverItem('proveedores')"
-                        @mouseleave="unhoverItem('proveedores')"
+                }" :style="{ animationDelay: '1.6s' }"
                         itemscope itemtype="https://schema.org/Service">
                     <div class="icon-container">
-                        <img :src="items.proveedores.currentImage" alt="Icono de proveedores certificados de calidad" class="icon" width="125" height="125" loading="lazy">
+                        <img :src="items.proveedores.currentImage" alt="Icono de proveedores certificados de calidad" class="icon" width="125" height="125" loading="lazy" data-icon="proveedores">
                     </div>
                     <div class="content">
                         <h3 itemprop="name">PROVEEDORES CERTIFICADOS</h3>
@@ -125,6 +118,13 @@ export default {
     name: 'ElegirnosContent',
     setup() {
         const elegirnosRef = ref(null)
+        const seguridadRef = ref(null)
+        const flexibilidadRef = ref(null)
+        const variedadRef = ref(null)
+        const equipamientoRef = ref(null)
+        const preparacionesRef = ref(null)
+        const puntualidadRef = ref(null)
+        const proveedoresRef = ref(null)
         const isVisible = ref(false)
 
         const items = reactive({
@@ -165,14 +165,29 @@ export default {
             }
         })
 
-        const hoverItem = (item) => {
-            items[item].currentImage = items[item].active
+        const activateIcon = (itemName) => {
+            setTimeout(() => {
+                // Crear efecto de desvanecimiento suave
+                const item = items[itemName]
+                
+                // Primero reducir opacidad
+                const iconElement = document.querySelector(`[data-icon="${itemName}"]`)
+                if (iconElement) {
+                    iconElement.style.opacity = '0'
+                    
+                    // Después de la transición, cambiar imagen y restaurar opacidad
+                    setTimeout(() => {
+                        item.currentImage = item.active
+                        iconElement.style.opacity = '1'
+                    }, 200)
+                } else {
+                    // Fallback si no encuentra el elemento
+                    item.currentImage = item.active
+                }
+            }, 500)
         }
 
-        const unhoverItem = (item) => {
-            items[item].currentImage = items[item].inactive
-        }
-
+        // Observer para la sección principal
         useIntersectionObserver(
             elegirnosRef,
             ([{ isIntersecting }]) => {
@@ -186,12 +201,46 @@ export default {
             }
         )
 
+        // Observers individuales para cada item
+        useIntersectionObserver(seguridadRef, ([{ isIntersecting }]) => {
+            if (isIntersecting) activateIcon('seguridad')
+        }, { threshold: 0.3 })
+
+        useIntersectionObserver(flexibilidadRef, ([{ isIntersecting }]) => {
+            if (isIntersecting) activateIcon('flexibilidad')
+        }, { threshold: 0.3 })
+
+        useIntersectionObserver(variedadRef, ([{ isIntersecting }]) => {
+            if (isIntersecting) activateIcon('variedad')
+        }, { threshold: 0.3 })
+
+        useIntersectionObserver(equipamientoRef, ([{ isIntersecting }]) => {
+            if (isIntersecting) activateIcon('equipamiento')
+        }, { threshold: 0.3 })
+
+        useIntersectionObserver(preparacionesRef, ([{ isIntersecting }]) => {
+            if (isIntersecting) activateIcon('preparaciones')
+        }, { threshold: 0.3 })
+
+        useIntersectionObserver(puntualidadRef, ([{ isIntersecting }]) => {
+            if (isIntersecting) activateIcon('puntualidad')
+        }, { threshold: 0.3 })
+
+        useIntersectionObserver(proveedoresRef, ([{ isIntersecting }]) => {
+            if (isIntersecting) activateIcon('proveedores')
+        }, { threshold: 0.3 })
+
         return {
             elegirnosRef,
+            seguridadRef,
+            flexibilidadRef,
+            variedadRef,
+            equipamientoRef,
+            preparacionesRef,
+            puntualidadRef,
+            proveedoresRef,
             isVisible,
-            items,
-            hoverItem,
-            unhoverItem
+            items
         }
     }
 }
@@ -299,7 +348,7 @@ export default {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    transition: all 0.4s ease;
+    transition: all 0.4s ease, opacity 0.2s ease;
     opacity: 1;
 }
 
