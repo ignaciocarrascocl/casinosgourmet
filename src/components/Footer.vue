@@ -129,7 +129,7 @@ function scrollToTop() {
 .footer-contact {
     display: flex;
     flex-direction: column;
-    gap: 1.8rem;
+    gap: 1rem;
     flex: 1;
     background: rgba(255, 255, 255, 0.8);
     padding: 2rem;

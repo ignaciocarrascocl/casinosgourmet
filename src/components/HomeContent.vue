@@ -77,6 +77,7 @@ const scrollToContact = () => {
     font-family: var(--font-family);
     max-width: 100%;
     overflow: hidden;
+    padding-top: 100px; /* Altura típica del nav */
 }
 
 /* Estados iniciales para animaciones */
@@ -110,7 +111,7 @@ const scrollToContact = () => {
     position: relative;
     min-height: 100vh;
     background-image: url('/plato.webp');
-    background-size: 50% auto;
+    background-size: contain;
     background-position: right 30%;
     /* Ajustado para que la imagen quede por encima de la cita */
     background-repeat: no-repeat;
@@ -226,6 +227,10 @@ const scrollToContact = () => {
 
 /* Diseño responsive */
 @media (max-width: 900px) {
+    .home-container {
+        padding-bottom: 0; /* Remover padding en mobile */
+    }
+    
     .hero-section {
         flex-direction: column;
         padding: 0;
