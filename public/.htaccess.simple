@@ -1,0 +1,32 @@
+# Simple .htaccess for contact form troubleshooting
+# Replace the existing .htaccess with this if you're still getting 403 errors
+
+# Enable rewrite engine
+RewriteEngine On
+
+# Allow all files by default
+<Files "*">
+    Require all granted
+</Files>
+
+# Specifically allow PHP files
+<FilesMatch "\.php$">
+    Require all granted
+</FilesMatch>
+
+# Allow HTML files
+<FilesMatch "\.html$">
+    Require all granted
+</FilesMatch>
+
+# CORS headers for all files
+<IfModule mod_headers.c>
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+    Header always set Access-Control-Allow-Headers "Content-Type"
+</IfModule>
+
+# Handle Vue.js routing (keep this at the end)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ index.html [L]

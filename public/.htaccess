@@ -1,0 +1,210 @@
+# Security Configuration for CasinosGourmet Vue.js Site
+# Based on iThemes Security settings, adapted for static site with PHP contact form
+
+# Ban specific IP addresses (keeping from original security config)
+SetEnvIF REMOTE_ADDR "^52\.172\.183\.7$" DenyAccess
+SetEnvIF X-FORWARDED-FOR "^52\.172\.183\.7$" DenyAccess
+SetEnvIF X-CLUSTER-CLIENT-IP "^52\.172\.183\.7$" DenyAccess
+
+SetEnvIF REMOTE_ADDR "^2001:41d0:0?0?0?2:0?9d5:(0{0,4}:){0,3}(0{0,4})?$" DenyAccess
+SetEnvIF X-FORWARDED-FOR "^2001:41d0:0?0?0?2:0?9d5:(0{0,4}:){0,3}(0{0,4})?$" DenyAccess
+SetEnvIF X-CLUSTER-CLIENT-IP "^2001:41d0:0?0?0?2:0?9d5:(0{0,4}:){0,3}(0{0,4})?$" DenyAccess
+
+<IfModule mod_litespeed.c>
+    Order allow,deny
+    Allow from all
+    Deny from env=DenyAccess
+    Deny from 52.172.183.7
+    Deny from 2001:41d0:2:9d5::
+</IfModule>
+
+# Protect system files
+<files .htaccess>
+    <IfModule mod_litespeed.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</files>
+
+# Disable directory browsing
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Block malicious request methods
+    RewriteCond %{REQUEST_METHOD} ^(TRACE|DELETE|TRACK) [NC]
+    RewriteRule ^.* - [F]
+
+    # Filter suspicious query strings (adapted from original, removed WordPress-specific ones)
+    RewriteCond %{QUERY_STRING} \.\.\/ [OR]
+    RewriteCond %{QUERY_STRING} \.(bash|git|hg|log|svn|swp|cvs) [NC,OR]
+    RewriteCond %{QUERY_STRING} etc/passwd [NC,OR]
+    RewriteCond %{QUERY_STRING} boot\.ini [NC,OR]
+    RewriteCond %{QUERY_STRING} ftp: [NC,OR]
+    RewriteCond %{QUERY_STRING} https?: [NC,OR]
+    RewriteCond %{QUERY_STRING} (<|%3C)script(>|%3E) [NC,OR]
+    RewriteCond %{QUERY_STRING} base64_decode\( [NC,OR]
+    RewriteCond %{QUERY_STRING} %24&x [NC,OR]
+    RewriteCond %{QUERY_STRING} 127\.0 [NC,OR]
+    RewriteCond %{QUERY_STRING} (globals|encode|localhost|loopback) [NC,OR]
+    RewriteCond %{QUERY_STRING} (request|concat|insert|union|declare) [NC,OR]
+    RewriteCond %{QUERY_STRING} %[01][0-9A-F] [NC]
+    RewriteRule ^.* - [F]
+
+    # Block non-English characters in URLs
+    RewriteCond %{QUERY_STRING} %[A-F][0-9A-F] [NC]
+    RewriteRule ^.* - [F]
+</IfModule>
+
+# Security Headers for Vue App
+<IfModule mod_headers.c>
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # CORS headers for contact form
+    <FilesMatch "contact-handler\.php$">
+        Header always set Access-Control-Allow-Origin "*"
+        Header always set Access-Control-Allow-Methods "POST, OPTIONS"
+        Header always set Access-Control-Allow-Headers "Content-Type"
+    </FilesMatch>
+    
+    <FilesMatch "debug-contact\.php$">
+        Header always set Access-Control-Allow-Origin "*"
+        Header always set Access-Control-Allow-Methods "POST, OPTIONS"
+        Header always set Access-Control-Allow-Headers "Content-Type"
+    </FilesMatch>
+</IfModule>
+
+# Prevent access to sensitive files (including contact form logs)
+<FilesMatch "\.(log|txt)$">
+    <IfModule mod_litespeed.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+    <IfModule !mod_litespeed.c>
+        Require all denied
+    </IfModule>
+</FilesMatch>
+
+# Allow contact form PHP files
+<Files "contact-handler.php">
+    <IfModule mod_litespeed.c>
+        Order allow,deny
+        Allow from all
+    </IfModule>
+    <IfModule !mod_litespeed.c>
+        Require all granted
+    </IfModule>
+</Files>
+
+<Files "debug-contact.php">
+    <IfModule mod_litespeed.c>
+        Order allow,deny
+        Allow from all
+    </IfModule>
+    <IfModule !mod_litespeed.c>
+        Require all granted
+    </IfModule>
+</Files>
+
+<Files "test-contact.html">
+    <IfModule mod_litespeed.c>
+        Order allow,deny
+        Allow from all
+    </IfModule>
+    <IfModule !mod_litespeed.c>
+        Require all granted
+    </IfModule>
+</Files>
+
+<Files "php-check.php">
+    <IfModule mod_litespeed.c>
+        Order allow,deny
+        Allow from all
+    </IfModule>
+    <IfModule !mod_litespeed.c>
+        Require all granted
+    </IfModule>
+</Files>
+
+<Files "php-config-check.html">
+    <IfModule mod_litespeed.c>
+        Order allow,deny
+        Allow from all
+    </IfModule>
+    <IfModule !mod_litespeed.c>
+        Require all granted
+    </IfModule>
+</Files>
+
+<Files "test-php.php">
+    <IfModule mod_litespeed.c>
+        Order allow,deny
+        Allow from all
+    </IfModule>
+    <IfModule !mod_litespeed.c>
+        Require all granted
+    </IfModule>
+</Files>
+
+# Protect config.php
+<Files "config.php">
+    <IfModule mod_litespeed.c>
+        Order deny,allow
+        Deny from all
+    </IfModule>
+    <IfModule !mod_litespeed.c>
+        Require all denied
+    </IfModule>
+</Files>
+
+# Enable compression for Vue assets
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>
+
+# Cache static assets
+<IfModule mod_expires.c>
+    ExpiresActive on
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+</IfModule>
+
+# Vue.js SPA routing - redirect all requests to index.html
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Handle contact form (allow PHP execution)
+    RewriteCond %{REQUEST_FILENAME} ^.*contact-handler\.php$
+    RewriteRule ^.*$ - [L]
+    
+    # Handle static assets
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^.*$ - [L]
+    
+    # Fallback to index.html for SPA routing
+    RewriteRule ^.*$ index.html [L]
+</IfModule>
+
+<Files 403.shtml>
+    order allow,deny
+    allow from all
+</Files>
