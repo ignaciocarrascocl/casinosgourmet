@@ -1,22 +1,14 @@
 <template>
-    <div ref="contactoRef" class="contacto-container" :class="{
-        'animate__animated animate__fadeIn': isVisible
-    }">
-        <h1 class="contacto-title" :class="{
-            'animate__animated animate__fadeInDown': isVisible
-        }" :style="{ animationDelay: '0.2s' }">CONTACTO</h1>
+    <div ref="contactoRef" class="contacto-container">
+        <h1 class="contacto-title">CONTACTO</h1>
         
         <!-- Success Message -->
-        <div v-if="showSuccess" class="success-message animate__animated animate__fadeInDown">
+        <div v-if="showSuccess" class="success-message">
             ¡Mensaje enviado exitosamente! Nos pondremos en contacto contigo pronto.
         </div>
 
-        <form @submit.prevent="handleSubmit" class="contacto-form" :class="{
-            'animate__animated animate__fadeInUp': isVisible
-        }" :style="{ animationDelay: '0.4s' }">
-            <div class="form-field" :class="{
-                'animate__animated animate__fadeInLeft': isVisible
-            }" :style="{ animationDelay: '0.6s' }">
+        <form @submit.prevent="handleSubmit" class="contacto-form">
+            <div class="form-field">
                 <input 
                     type="text" 
                     placeholder="NOMBRE:" 
@@ -27,9 +19,7 @@
                 />
                 <span v-if="errors.name" class="error-message">{{ errors.name }}</span>
             </div>
-            <div class="form-field" :class="{
-                'animate__animated animate__fadeInRight': isVisible
-            }" :style="{ animationDelay: '0.8s' }">
+            <div class="form-field">
                 <input 
                     type="email" 
                     placeholder="E-MAIL:" 
@@ -40,9 +30,7 @@
                 />
                 <span v-if="errors.email" class="error-message">{{ errors.email }}</span>
             </div>
-            <div class="form-field" :class="{
-                'animate__animated animate__fadeInLeft': isVisible
-            }" :style="{ animationDelay: '1.0s' }">
+            <div class="form-field">
                 <input 
                     type="tel" 
                     placeholder="TELÉFONO:" 
@@ -52,9 +40,7 @@
                 />
                 <span v-if="errors.phone" class="error-message">{{ errors.phone }}</span>
             </div>
-            <div class="form-field" :class="{
-                'animate__animated animate__fadeInUp': isVisible
-            }" :style="{ animationDelay: '1.2s' }">
+            <div class="form-field">
                 <textarea 
                     rows="5" 
                     placeholder="MENSAJE:"
@@ -67,9 +53,7 @@
             </div>
 
             <!-- Simple Math CAPTCHA -->
-            <div class="form-field captcha-field" :class="{
-                'animate__animated animate__fadeInLeft': isVisible
-            }" :style="{ animationDelay: '1.3s' }">
+            <div class="form-field captcha-field">
                 <label class="captcha-label">
                     Verificación de seguridad: ¿Cuánto es {{ captcha.num1 }} + {{ captcha.num2 }}?
                 </label>
@@ -91,10 +75,8 @@
                 type="submit"
                 class="submit-btn" 
                 :class="{
-                    'animate__animated animate__pulse': isVisible,
                     'loading': isLoading
                 }" 
-                :style="{ animationDelay: '1.4s' }"
                 :disabled="isLoading"
             >
                 {{ isLoading ? 'Enviando...' : 'Solicitar Cotización' }}
@@ -262,25 +244,11 @@ useIntersectionObserver(
 <style scoped>
 .contacto-container {
     width: 100%;
+    background-color: #f8f9fa;
     max-width: 1200px;
     margin: 0 auto;
     padding: 40px 20px;
     font-family: var(--font-family);
-}
-
-/* Estados iniciales para animaciones */
-.contacto-title,
-.contacto-form,
-.form-field,
-.submit-btn {
-    opacity: 0;
-}
-
-.contacto-title.animate__animated,
-.contacto-form.animate__animated,
-.form-field.animate__animated,
-.submit-btn.animate__animated {
-    opacity: 1;
 }
 
 .contacto-title {

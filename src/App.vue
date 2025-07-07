@@ -91,6 +91,7 @@ body {
   overflow-x: hidden;
   width: 100%;
   max-width: 100vw;
+  min-height: 100vh;
 }
 
 /* Eliminar el margen negativo, ya no es necesario */
