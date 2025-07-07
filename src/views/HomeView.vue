@@ -65,7 +65,7 @@ onUnmounted(() => {
 
 #inicio {
   padding: 0;
-  height: calc(100vh - var(--nav-height));
+  min-height: calc(100vh - var(--nav-height)); /* Cambiado de height a min-height */
 }
 
 #porque-elegirnos,
@@ -81,6 +81,12 @@ onUnmounted(() => {
 @media (max-width: 991.98px) {
   .home-view {
     padding-top: var(--nav-height, 80px);
+  }
+  
+  /* Asegurar que en móviles el contenido pueda hacer scroll */
+  #inicio {
+    min-height: calc(100vh - var(--nav-height));
+    height: auto; /* Permitir que la altura se ajuste al contenido */
   }
 }
 </style>
