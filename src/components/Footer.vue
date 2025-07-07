@@ -14,17 +14,17 @@
                 }" :style="{ animationDelay: '0.4s' }">
                     <div class="contact-item">
                         <img src="/images/icons/whatsapp.png" alt="WhatsApp" class="contact-icon" />
-                        <span>+569 44622619</span>
+                        <a href="tel:+56944622619">+569 44622619</a>
                     </div>
                     <div class="divider"></div>
                     <div class="contact-item">
                         <img src="/images/icons/email.png" alt="Email" class="contact-icon" />
-                        <span>contacto@casinosgourmet.cl</span>
+                        <a href="mailto:contacto@casinosgourmet.cl">contacto@casinosgourmet.cl</a>
                     </div>
                     <div class="divider"></div>
                     <div class="contact-item">
                         <img src="/images/icons/spoon.png" alt="Trabaja con nosotros" class="contact-icon" />
-                        <router-link to="/trabaja-con-nosotros" @click="scrollToTop">Trabaja con nosotros</router-link>
+                        <router-link to="/trabaja-con-nosotros">Trabaja con nosotros</router-link>
                     </div>
                 </div>
             </div>
@@ -149,8 +149,8 @@ function scrollToTop() {
     cursor: pointer;
 }
 
-.contact-item:nth-child(1) span,
-.contact-item:nth-child(3) span {
+.contact-item:nth-child(1) a,
+.contact-item:nth-child(3) a {
     font-weight: bold;
 }
 

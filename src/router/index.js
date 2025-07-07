@@ -15,6 +15,10 @@ const router = createRouter({
       component: () => import('../views/TrabajaConNosotrosView.vue'),
     },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    // Siempre ir al top de la página
+    return { top: 0 }
+  },
 })
 
 export default router
