@@ -31,12 +31,13 @@
                     Solicitar Cotización
                 </button>
             </div>
-            <div class="slogan-section" :class="{
+
+        </div>
+        <div class="slogan-section" :class="{
                 'animate__animated animate__fadeInRight': isVisible
             }" :style="{ animationDelay: '1.3s' }">
                 <h3>"Creamos soluciones adaptadas para cada cliente"</h3>
             </div>
-        </div>
     </div>
 </template>
 
@@ -186,6 +187,7 @@ const scrollToContact = () => {
     color: white;
     border: none;
     padding: 1.04rem 2.08rem; /* Aumentado 30% de 0.8rem 1.6rem */
+    margin-bottom: 2rem;
     font-size: 1.3rem; /* Aumentado 30% de 1rem */
     font-weight: 600;
     cursor: pointer;
@@ -209,9 +211,6 @@ const scrollToContact = () => {
     padding: 1.2rem;
     /* Reducido en 20% de 1.5rem */
     text-align: center;
-    position: absolute;
-    /* Posicionamiento absoluto para colocarlo dentro de hero-section */
-    bottom: 0;
     /* Lo coloca en la parte inferior de hero-section */
     width: 100%;
     /* Ocupa todo el ancho */
@@ -235,7 +234,7 @@ const scrollToContact = () => {
         flex-direction: column;
         padding: 0;
         margin: 0;
-        min-height: 100vh;
+
         background-position: center top;
         background-size: 100% auto;
         width: 100%;
