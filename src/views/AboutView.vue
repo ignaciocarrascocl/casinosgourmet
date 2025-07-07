@@ -7,7 +7,7 @@
 <style>
 @media (min-width: 1024px) {
   .about {
-    min-height: 100vh;
+    min-height: 600px; /* Cambiar de 100vh a altura fija */
     display: flex;
     align-items: center;
   }

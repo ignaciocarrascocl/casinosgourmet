@@ -70,13 +70,13 @@ onUnmounted(() => {
 
 <style scoped>
 .trabaja-view {
-  padding-top: var(--nav-height, 110px);
-  min-height: 100vh;
+  padding-top: 110px;
+  min-height: 600px; /* Cambiar de 100vh a altura fija */
 }
 
 @media (max-width: 991.98px) {
   .trabaja-view {
-    padding-top: var(--nav-height, 80px);
+    padding-top: 80px;
   }
 }
 </style>

@@ -89,7 +89,7 @@ useIntersectionObserver(
 .trabaja-container {
     width: 100%;
     font-family: var(--font-family);
-    min-height: calc(100vh - 110px);
+    min-height: 500px; /* Cambiar de calc(100vh - 110px) a altura fija */
 }
 
 /* Estados iniciales para animaciones */

@@ -78,7 +78,8 @@ const scrollToContact = () => {
     font-family: var(--font-family);
     max-width: 100%;
     overflow: hidden;
-    padding-top: 100px; /* Altura típica del nav */
+    /* iOS scroll fix - eliminar altura completa del viewport */
+    -webkit-overflow-scrolling: touch;
 }
 
 /* Estados iniciales para animaciones */
@@ -90,6 +91,13 @@ const scrollToContact = () => {
 .quote-button,
 .slogan-section {
     opacity: 0;
+}
+
+/* Padding top solo en desktop */
+@media (min-width: 901px) {
+    .home-container {
+        padding-top: 60px;
+    }
 }
 
 .hero-content.animate__animated,
@@ -110,11 +118,10 @@ const scrollToContact = () => {
     background-color: #ffffff;
     width: 100%;
     position: relative;
-    min-height: 100vh;
+    min-height: 600px; /* Cambiar de 100vh a altura fija */
     background-image: url('/plato.webp');
     background-size: contain;
     background-position: right 30%;
-    /* Ajustado para que la imagen quede por encima de la cita */
     background-repeat: no-repeat;
 }
 
@@ -227,14 +234,14 @@ const scrollToContact = () => {
 /* Diseño responsive */
 @media (max-width: 900px) {
     .home-container {
-        padding-bottom: 0; /* Remover padding en mobile */
+        padding-bottom: 0;
     }
     
     .hero-section {
         flex-direction: column;
         padding: 0;
         margin: 0;
-
+        min-height: 500px; /* Altura fija para móvil */
         background-position: center top;
         background-size: 100% auto;
         width: 100%;

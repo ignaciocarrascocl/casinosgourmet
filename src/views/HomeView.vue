@@ -55,17 +55,16 @@ onUnmounted(() => {
 
 <style scoped>
 .home-view {
-  padding-top: var(--nav-height, 110px);
+  padding-top: 110px;
 }
 
 .section {
-  min-height: calc(100vh - var(--nav-height));
-  scroll-margin-top: var(--nav-height);
+  scroll-margin-top: 110px;
 }
 
 #inicio {
   padding: 0;
-  min-height: calc(100vh - var(--nav-height)); /* Cambiado de height a min-height */
+  min-height: 600px; /* Cambiar de calc(100vh - 110px) a altura fija */
 }
 
 #porque-elegirnos,
@@ -80,13 +79,16 @@ onUnmounted(() => {
 
 @media (max-width: 991.98px) {
   .home-view {
-    padding-top: var(--nav-height, 80px);
+    padding-top: 80px;
   }
   
-  /* Asegurar que en móviles el contenido pueda hacer scroll */
+  .section {
+    scroll-margin-top: 80px;
+  }
+  
   #inicio {
-    min-height: calc(100vh - var(--nav-height));
-    height: auto; /* Permitir que la altura se ajuste al contenido */
+    min-height: 500px; /* Cambiar de calc(100vh - 80px) a altura fija */
+    height: auto;
   }
 }
 </style>

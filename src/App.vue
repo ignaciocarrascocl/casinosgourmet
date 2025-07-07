@@ -3,33 +3,9 @@ import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
 import { onMounted, onUnmounted } from 'vue'
 
-// Función para actualizar dinámicamente la altura de las secciones
-function updateSectionHeights() {
-  const navbar = document.querySelector('nav'); // Asumiendo que el navbar está en una etiqueta 'nav'
-  if (navbar) {
-    const navHeight = navbar.offsetHeight;
-    document.documentElement.style.setProperty('--nav-height', `${navHeight}px`);
-  }
-}
-
-// Referencia para el intervalo de animación
 let pulseInterval = null;
 
 onMounted(() => {
-  // Actualizar altura al cargar
-  updateSectionHeights();
-
-  // Actualizar altura cuando cambia el tamaño de la ventana
-  window.addEventListener('resize', updateSectionHeights);
-
-  // Agregar animate.css si no está incluido
-  if (!document.querySelector('link[href*="animate.css"]')) {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css';
-    document.head.appendChild(link);
-  }
-
   // Configurar animación de pulso cada 5 segundos
   setTimeout(() => {
     pulseInterval = setInterval(() => {
@@ -41,13 +17,10 @@ onMounted(() => {
         }, 1000);
       }
     }, 5000);
-  }, 2000); // Esperar 2 segundos antes de iniciar el pulso
+  }, 2000);
 });
 
 onUnmounted(() => {
-
-
-  // Limpiar el intervalo de pulso
   if (pulseInterval) {
     clearInterval(pulseInterval);
   }
@@ -72,77 +45,56 @@ onUnmounted(() => {
 </template>
 
 <style>
-/* Estilo global para compensar el navbar fijo */
+/* Variables CSS fijas - sin cálculos dinámicos */
 :root {
   --nav-height: 110px;
-  /* Valor inicial que será sobrescrito por JS */
 }
 
-/* Eliminamos el padding-top del body */
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Prevenir scroll horizontal global */
+  overflow-x: hidden;
 }
 
-/* Agregar overflow-x: hidden al app también */
 #app {
   overflow-x: hidden;
   width: 100%;
   max-width: 100vw;
 }
 
-/* Eliminar el margen negativo, ya no es necesario */
-#inicio {
-  margin-top: 0;
+/* iOS specific fixes */
+@supports (-webkit-touch-callout: none) {
+  html {
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  body {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  #app {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+  }
 }
 
 @media (max-width: 991.98px) {
   :root {
     --nav-height: 80px;
-    /* Valor inicial para pantallas pequeñas */
   }
 }
 </style>
 
 <style scoped>
+/* Estilo simple para secciones */
 .section {
-  /* Utiliza la variable CSS */
   scroll-margin-top: var(--nav-height);
-}
-
-#inicio {
-  padding: 0;
-}
-
-#porque-elegirnos,
-#servicios,
-#contacto {
-  padding: 80px 0;
-  /* Mantiene el padding original para las demás secciones */
-}
-
-/* Estilo específico para la sección entregamos */
-#entregamos {
-  padding: 0;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.section h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: #333;
-}
-
-.section p {
-  font-size: 1.2rem;
-  color: #666;
-  line-height: 1.6;
 }
 
 /* Estilos del botón WhatsApp */
@@ -160,8 +112,6 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 1000;
   transition: all 0.3s ease;
-  animation-duration: 1s;
-  animation-delay: 1s;
 }
 
 .whatsapp-button:hover {
@@ -176,7 +126,6 @@ body {
   filter: brightness(0) invert(1);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .whatsapp-button {
     width: 55px;
