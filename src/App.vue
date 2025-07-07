@@ -45,8 +45,7 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  // Limpieza de event listeners
-  window.removeEventListener('resize', updateSectionHeights);
+
 
   // Limpiar el intervalo de pulso
   if (pulseInterval) {
@@ -108,15 +107,12 @@ body {
 
 <style scoped>
 .section {
-  min-height: calc(100vh - var(--nav-height));
   /* Utiliza la variable CSS */
   scroll-margin-top: var(--nav-height);
 }
 
 #inicio {
   padding: 0;
-  height: calc(100vh - var(--nav-height));
-  /* Utiliza la variable CSS */
 }
 
 #porque-elegirnos,

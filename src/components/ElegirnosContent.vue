@@ -248,7 +248,7 @@ export default {
 
 <style scoped>
 .elegirnos-section {
-    padding: 12rem 0 8rem 0;
+    padding: 2rem 0 8rem 0;
 }
 
 /* Estados iniciales para animaciones */
@@ -388,7 +388,7 @@ p {
 
 @media (max-width: 768px) {
     .elegirnos-section {
-        padding: 12rem 0 4rem 0; /* Aumentado padding-top de 4rem a 6rem para móvil */
+        padding: 4rem 0 4rem 0; /* Aumentado padding-top de 4rem a 6rem para móvil */
     }
 
     .container {
