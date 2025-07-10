@@ -68,7 +68,7 @@ const navigateToSection = async (sectionId) => {
 .top-header {
     display: flex;
     width: 100%;
-    min-height: 110px;
+    min-height: 77px; /* Reducido de 110px (30% menos) */
     font-family: var(--font-family);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: var(--verde);
@@ -83,14 +83,14 @@ const navigateToSection = async (sectionId) => {
     background-color: white;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     padding: 0 10px;
     height: 100%;
 }
 
 .logo {
     max-width: 324px;
-    max-height: 175px;
+    max-height: 140px; /* Reducido de 175px (30% menos) */
     object-fit: contain;
     padding: 5px;
 }
