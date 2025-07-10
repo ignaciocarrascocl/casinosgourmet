@@ -21,4 +21,16 @@ const router = createRouter({
   },
 })
 
+// Tracking de Google Analytics para cambios de ruta
+router.afterEach((to, from) => {
+  // Verificar que gtag esté disponible
+  if (typeof gtag !== 'undefined') {
+    gtag('config', 'G-83XSC3WKRD', {
+      page_path: to.path,
+      page_title: to.name || to.path,
+      page_location: window.location.origin + to.fullPath
+    })
+  }
+})
+
 export default router
